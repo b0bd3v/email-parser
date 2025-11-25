@@ -1,0 +1,37 @@
+services:
+  database:
+    image: postgres:15
+    container_name: database-email-parser
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - postgres_email_parser:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7
+    container_name: redis-email-parser
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_email_parser:/data
+
+  sidekiq:
+    build: .
+    container_name: sidekiq-email-parser
+    command: bundle exec sidekiq
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@database-email-parser:5432/email_parser_development
+      REDIS_URL: redis://redis-email-parser:6379/0
+      RAILS_ENV: development
+    volumes:
+      - .:/app
+    depends_on:
+      - database
+      - redis
+
+volumes:
+  postgres_email_parser:
+  redis_email_parser:
