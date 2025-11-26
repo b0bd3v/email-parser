@@ -13,6 +13,7 @@ gem 'tailwindcss-rails'
 gem 'jbuilder'
 gem 'redis', '~> 5.0'
 gem 'sidekiq'
+gem 'aasm' # State machine
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem 'kredis'
