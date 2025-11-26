@@ -34,6 +34,22 @@ services:
       - database
       - redis
 
+  test:
+    build: .
+    container_name: test-email-parser
+    command: bundle exec rspec
+    env_file:
+      - .env.test
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@database-email-parser:5432/email_parser_test
+      REDIS_URL: redis://redis-email-parser:6379/0
+      RAILS_ENV: test
+    volumes:
+      - .:/app
+    depends_on:
+      - database
+      - redis
+
 volumes:
   postgres_email_parser:
   redis_email_parser:

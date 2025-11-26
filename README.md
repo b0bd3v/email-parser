@@ -33,3 +33,9 @@ Executando dessa forma, o Rails irá iniciar os processos definidos no arquivo `
 - `web`: Inicia o servidor Rails
 - `css`: Inicia o processador de CSS (Tailwind), que irá compilar os arquivos CSS toda vez que houver alterações.
 
+## Ambiente de teste
+
+Para executar os testes:
+```bash
+bundle exec rspec
+```
