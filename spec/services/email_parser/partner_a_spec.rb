@@ -1,21 +1,13 @@
 require 'rails_helper'
+require 'support'
 
 describe EmailParser::PartnerA do
-  files = Dir[Rails.root.join('spec', 'emails', '*.eml')].select do |file|
-    File.read(file).include?('loja@fornecedorA.com')
-  end.sort
-
-  files.each do |file_path|
+  email_files('loja@fornecedorA.com').each do |file_path|
     filename = File.basename(file_path)
     file_content = File.read(file_path)
 
     context "when parsing #{filename}" do
-      let(:mail) do
-        double('Mail',
-          body: double('Body', to_s: file_content),
-          subject: file_content.match(/Subject: (.+)/)[1].strip,
-        )
-      end
+      let(:mail) { double_mail(file_content) }
 
       subject { described_class.new(mail) }
 
