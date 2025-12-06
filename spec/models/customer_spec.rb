@@ -64,5 +64,23 @@ describe Customer do
         expect(customer.errors[:phone]).to include("can't be blank")
       end
     end
+
+    context 'email_subject validation' do
+      it 'is invalid without email_subject' do
+        customer = build(:customer, email_subject: nil)
+
+        expect(customer).not_to be_valid
+        expect(customer.errors[:email_subject]).to include("can't be blank")
+      end
+    end
+
+    context 'product_code validation' do
+      it 'is invalid without product_code' do
+        customer = build(:customer, product_code: nil)
+
+        expect(customer).not_to be_valid
+        expect(customer.errors[:product_code]).to include("can't be blank")
+      end
+    end
   end
 end
