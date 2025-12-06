@@ -4,7 +4,7 @@ FactoryBot.define do
     file_name { 'email4.eml' }
     raw_file_path { 'emails/email4.eml' }
     parsed_data { nil }
-    raw_data { File.read(Rails.root.join('spec', 'emails', 'email4.eml')) }
+    raw_data { File.read(Rails.root.join('spec', 'fixtures', 'emails', 'email4.eml')) }
     error_message { nil }
     customer { nil }
 
