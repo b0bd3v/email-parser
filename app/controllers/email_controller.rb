@@ -1,4 +1,6 @@
 class EmailController < ApplicationController
+  before_action :authenticate_user!
+
   def new
     @email = Email.new
   end
@@ -15,7 +17,7 @@ class EmailController < ApplicationController
   end
 
   def index
-    
+
   end
 
   def show
