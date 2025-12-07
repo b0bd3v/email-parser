@@ -1,5 +1,5 @@
 def email_files(from)
-  Dir[Rails.root.join('spec', 'emails', '*.eml')].select do |file_path|
+  Dir[Rails.root.join('spec', 'fixtures', 'emails', '*.eml')].select do |file_path|
     File.read(file_path).include?(from)
   end.sort
 end

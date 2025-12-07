@@ -27,6 +27,9 @@ gem 'tzinfo-data', platforms: %i[ windows jruby ]
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', require: false
 
+# Faraday gem for making HTTP requests
+gem "faraday", "~> 2.14"
+
 group :development, :test do
   gem 'debug', platforms: %i[ mri windows ]
   gem 'dotenv-rails'
