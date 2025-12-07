@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ProcessEmailJob, type: :job do
+describe ProcessEmailJob, type: :job do
   before { ActiveJob::Base.queue_adapter = :test }
 
   describe '#perform_later' do
