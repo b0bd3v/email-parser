@@ -30,12 +30,16 @@ gem 'bootsnap', require: false
 # Faraday gem for making HTTP requests
 gem "faraday", "~> 2.14"
 
+# Devise gem for authentication
+gem "devise", "~> 4.9"
+
 group :development, :test do
   gem 'debug', platforms: %i[ mri windows ]
   gem 'dotenv-rails'
   gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'faker'
+  gem "simplecov", "~> 0.22.0"
 end
 
 group :development do
@@ -48,4 +52,3 @@ group :development do
   # gem 'spring'
 end
 
-gem "devise", "~> 4.9"
