@@ -1,19 +1,21 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
 ruby '3.3.1'
 
-gem 'rails', '~> 7.1.6'
-gem 'sprockets-rails'
+gem 'aasm' # State machine
+gem 'importmap-rails'
+gem 'jbuilder'
 gem 'pg', '~> 1.1'
 gem 'puma', '>= 5.0'
-gem 'importmap-rails'
-gem 'turbo-rails'
-gem 'stimulus-rails'
-gem 'tailwindcss-rails'
-gem 'jbuilder'
+gem 'rails', '~> 7.1.6'
 gem 'redis', '~> 5.0'
 gem 'sidekiq'
-gem 'aasm' # State machine
+gem 'sprockets-rails'
+gem 'stimulus-rails'
+gem 'tailwindcss-rails'
+gem 'turbo-rails'
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem 'kredis'
@@ -22,27 +24,29 @@ gem 'aasm' # State machine
 # gem 'bcrypt', '~> 3.1.7'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: %i[ windows jruby ]
+gem 'tzinfo-data', platforms: %i[windows jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', require: false
 
 # Faraday gem for making HTTP requests
-gem "faraday", "~> 2.14"
+gem 'faraday', '~> 2.14'
 
 # Devise gem for authentication
-gem "devise", "~> 4.9"
+gem 'devise', '~> 4.9'
 
 group :development, :test do
-  gem 'debug', platforms: %i[ mri windows ]
+  gem 'debug', platforms: %i[mri windows]
   gem 'dotenv-rails'
-  gem 'rspec-rails'
   gem 'factory_bot_rails'
   gem 'faker'
-  gem "simplecov", "~> 0.22.0"
+  gem 'rspec-rails'
+  gem 'simplecov', '~> 0.22.0'
 end
 
 group :development do
+  gem 'annotate', '~> 3.2'
+  gem 'rubocop', '~> 1.81'
   gem 'web-console'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
@@ -51,4 +55,3 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem 'spring'
 end
-

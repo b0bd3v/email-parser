@@ -1,3 +1,18 @@
+# frozen_string_literal: true
+
+# == Schema Information
+#
+# Table name: customers
+#
+#  id            :bigint           not null, primary key
+#  email         :string
+#  email_subject :string
+#  name          :string
+#  phone         :string
+#  product_code  :string
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#
 require 'rails_helper'
 
 describe Customer do
@@ -15,7 +30,7 @@ describe Customer do
       end
     end
 
-    context 'email validation' do 
+    context 'email validation' do
       it 'should be valid email format' do
         customer = build(:customer, email: 'email@domain.com')
         expect(customer).to be_valid
@@ -24,11 +39,11 @@ describe Customer do
       it 'should be invalid email format' do
         customer = build(:customer, email: 'invalid_email')
         expect(customer).not_to be_valid
-        expect(customer.errors[:email]).to include("is invalid")
+        expect(customer.errors[:email]).to include('is invalid')
       end
     end
 
-    context 'phone validation' do 
+    context 'phone validation' do
       it 'should be valid phone format' do
         customer = build(:customer, phone: '1234567890')
         expect(customer).to be_valid
@@ -37,9 +52,9 @@ describe Customer do
       it 'should be invalid phone format' do
         customer = build(:customer, phone: 'invalid_phone')
         expect(customer).not_to be_valid
-        expect(customer.errors[:phone]).to include("is invalid")
+        expect(customer.errors[:phone]).to include('is invalid')
       end
-    end 
+    end
 
     context 'email and phone validation' do
       it 'should be valid with email only' do

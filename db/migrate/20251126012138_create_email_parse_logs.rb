@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Migration to create the EmailParseLogs table.
 class CreateEmailParseLogs < ActiveRecord::Migration[7.1]
   def change
     create_table :email_parse_logs do |t|

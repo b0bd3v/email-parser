@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Job to process incoming emails.
 class ProcessEmailJob < ApplicationJob
   queue_as :default
 

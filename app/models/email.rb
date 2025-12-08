@@ -1,3 +1,13 @@
+# frozen_string_literal: true
+
+# == Schema Information
+#
+# Table name: emails
+#
+#  id         :bigint           not null, primary key
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
 class Email < ApplicationRecord
   has_one_attached :file
 
@@ -7,8 +17,8 @@ class Email < ApplicationRecord
   private
 
   def file_extension
-    if file.attached? && !file.filename.extension.in?(%w(eml))
-      errors.add(:file, "must be an EML file")
-    end
+    return unless file.attached? && !file.filename.extension.in?(%w[eml])
+
+    errors.add(:file, 'must be an EML file')
   end
 end

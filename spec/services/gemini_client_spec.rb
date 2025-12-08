@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe GeminiClient do
-  let(:prompt) { "Extract info from the email" }
-  let(:api_key) { "xxxxxx" }
+  let(:prompt) { 'Extract info from the email' }
+  let(:api_key) { 'xxxxxx' }
   let(:client) { described_class.new(prompt) }
-  let(:api_url) { "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-pro-preview:generateContent" }
+  let(:api_url) { 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3-pro-preview:generateContent' }
 
   before do
     ENV['GEMINI_API_KEY'] = api_key
@@ -22,11 +24,11 @@ RSpec.describe GeminiClient do
     context 'when request is successful' do
       let(:response_body) do
         {
-          "candidates" => [
+          'candidates' => [
             {
-              "content" => {
-                "parts" => [
-                  { "text" => "```json\n{\"name\": \"John Doe\"}\n```" }
+              'content' => {
+                'parts' => [
+                  { 'text' => "```json\n{\"name\": \"John Doe\"}\n```" }
                 ]
               }
             }
@@ -42,12 +44,12 @@ RSpec.describe GeminiClient do
       end
 
       it 'parses the JSON response from Gemini' do
-        expect(client.parse).to eq({ "name" => "John Doe" })
+        expect(client.parse).to eq({ 'name' => 'John Doe' })
       end
     end
 
     context 'when API returns an error' do
-      let(:faraday_response) { instance_double(Faraday::Response, success?: false, status: 500, body: "Internal Server Error") }
+      let(:faraday_response) { instance_double(Faraday::Response, success?: false, status: 500, body: 'Internal Server Error') }
       let(:faraday_connection) { instance_double(Faraday::Connection) }
 
       before do
@@ -64,11 +66,11 @@ RSpec.describe GeminiClient do
     context 'when JSON parsing fails' do
       let(:response_body) do
         {
-          "candidates" => [
+          'candidates' => [
             {
-              "content" => {
-                "parts" => [
-                  { "text" => "Invalid JSON" }
+              'content' => {
+                'parts' => [
+                  { 'text' => 'Invalid JSON' }
                 ]
               }
             }

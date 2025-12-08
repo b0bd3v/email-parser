@@ -1,7 +1,11 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe EmailParser::Base do
-  let(:mail) { double('Mail', body: double('Body', to_s: File.read(Rails.root.join('spec', 'fixtures', 'emails', 'email4.eml')))) }
+  let(:mail) do
+    double('Mail', body: double('Body', to_s: File.read(Rails.root.join('spec', 'fixtures', 'emails', 'email4.eml'))))
+  end
 
   describe '#value' do
     let(:subclass) do

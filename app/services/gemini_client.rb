@@ -1,14 +1,17 @@
+# frozen_string_literal: true
+
 require 'net/http'
 require 'uri'
 require 'json'
 require 'faraday'
 
+# Client for interacting with the Gemini API.
 class GeminiClient
-  API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-pro-preview:generateContent"
+  API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-3-pro-preview:generateContent'
 
   def initialize(prompt)
     @prompt = prompt
-    @api_key = ENV['GEMINI_API_KEY']
+    @api_key = ENV.fetch('GEMINI_API_KEY', nil)
   end
 
   def parse
@@ -24,23 +27,23 @@ class GeminiClient
   private
 
   def request
-    conn = Faraday.new do |f|
+    response = conn.post(API_URL) do |req|
+      req.headers['Content-Type'] = 'application/json'
+      req.headers['x-goog-api-key'] = @api_key
+      req.body = { contents: [{ parts: [{ text: @prompt }] }] }
+    end
+
+    raise "API Request Failed: #{response.status} #{response.body}" unless response.success?
+
+    response.body
+  end
+
+  def conn
+    @conn ||= Faraday.new do |f|
       f.request :json
       f.response :json, content_type: /\bjson$/
       f.adapter Faraday.default_adapter
     end
-
-    response = conn.post(API_URL) do |req|
-      req.headers['Content-Type']  = 'application/json'
-      req.headers['x-goog-api-key'] = ENV.fetch('GEMINI_API_KEY')
-      req.body = { contents: [{ parts: [{ text: @prompt }] }] }
-    end
-
-    unless response.success?
-      raise "API Request Failed: #{response.status} #{response.body}" 
-    end
-
-    response.body
   end
 
   def parse_response(json)

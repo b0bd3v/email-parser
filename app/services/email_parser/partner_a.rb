@@ -1,4 +1,7 @@
+# frozen_string_literal: true
+
 module EmailParser
+  # Email parser for Partner A.
   class PartnerA < Base
     def parse
       {

@@ -1,4 +1,7 @@
+# frozen_string_literal: true
+
 module EmailParser
+  # Base class for email parsers.
   class Base
     attr_reader :mail
 
@@ -7,7 +10,7 @@ module EmailParser
     end
 
     def parse
-      raise NotImplementedError, "Subclasses must implement the parse method"
+      raise NotImplementedError, 'Subclasses must implement the parse method'
     end
 
     private

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 describe ProcessEmailJob, type: :job do
@@ -17,7 +19,7 @@ describe ProcessEmailJob, type: :job do
     let(:file_path) { Rails.root.join('spec/fixtures/emails/email4.eml').to_s }
     it 'creates an EmailParseLog with success status' do
       described_class.perform_now(file_path)
-      
+
       expect(EmailParseLog.last.status).to eq('success')
     end
   end

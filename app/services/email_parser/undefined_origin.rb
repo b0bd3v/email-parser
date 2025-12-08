@@ -1,4 +1,7 @@
+# frozen_string_literal: true
+
 module EmailParser
+  # Email parser for undefined origins.
   class UndefinedOrigin < Base
     def parse
       GeminiClient.new(prompt).parse

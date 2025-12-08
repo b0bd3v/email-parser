@@ -1,18 +1,34 @@
+# frozen_string_literal: true
+
+# == Schema Information
+#
+# Table name: email_parse_logs
+#
+#  id            :bigint           not null, primary key
+#  error_message :text
+#  file_name     :string
+#  parsed_data   :jsonb
+#  partner_email :string
+#  raw_data      :text
+#  raw_file_path :string
+#  status        :string
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  customer_id   :integer
+#
 require 'rails_helper'
 
 describe EmailParseLog do
   let(:log) { build(:email_parse_log) }
   let(:customer) { create(:customer) }
-  let(:parsed_data) do 
-    { product_code: Faker::Alphanumeric.alphanumeric(number: 6), 
-      email_subject: Faker::Lorem.sentence, 
-      customer_name: Faker::Name.name, 
+  let(:parsed_data) do
+    { product_code: Faker::Alphanumeric.alphanumeric(number: 6),
+      email_subject: Faker::Lorem.sentence,
+      customer_name: Faker::Name.name,
       customer_email: Faker::Internet.email }
   end
 
   describe 'validations' do
-    
-
     context 'customer' do
       it 'is valid' do
         log.mark_as_success
@@ -29,17 +45,17 @@ describe EmailParseLog do
       it 'is invalid when status is processing and customer is present' do
         log.customer = build(:customer)
         expect(log).to be_invalid
-        expect(log.errors[:customer]).to include("must be blank when status is processing")
+        expect(log.errors[:customer]).to include('must be blank when status is processing')
       end
 
       it 'is invalid when status is failed and customer is present' do
         log.customer = build(:customer)
         log.mark_as_failed
         expect(log).to be_invalid
-        expect(log.errors[:customer]).to include("must be blank when status is failed")
+        expect(log.errors[:customer]).to include('must be blank when status is failed')
       end
     end
-    
+
     context 'parsed_data' do
       it 'is valid' do
         log.mark_as_success
@@ -57,7 +73,7 @@ describe EmailParseLog do
         log.parsed_data = parsed_data
 
         expect(log).to be_invalid
-        expect(log.errors[:parsed_data]).to include("must be blank when status is processing")
+        expect(log.errors[:parsed_data]).to include('must be blank when status is processing')
       end
 
       it 'is invalid when status is failed and parsed_data is present' do
@@ -65,7 +81,7 @@ describe EmailParseLog do
         log.mark_as_failed
 
         expect(log).to be_invalid
-        expect(log.errors[:parsed_data]).to include("must be blank when status is failed")
+        expect(log.errors[:parsed_data]).to include('must be blank when status is failed')
       end
     end
 
@@ -84,14 +100,14 @@ describe EmailParseLog do
       it 'is invalid when status is processing and error_message is present' do
         log.error_message = 'An error occurred'
         expect(log).to be_invalid
-        expect(log.errors[:error_message]).to include("must be blank when status is processing")
+        expect(log.errors[:error_message]).to include('must be blank when status is processing')
       end
 
       it 'is invalid when status is success and error_message is present' do
         log.error_message = 'An error occurred'
         log.mark_as_success
         expect(log).to be_invalid
-        expect(log.errors[:error_message]).to include("must be blank when status is success")
+        expect(log.errors[:error_message]).to include('must be blank when status is success')
       end
     end
 
@@ -111,14 +127,14 @@ describe EmailParseLog do
       it 'is invalid when status is processing and customer is present' do
         log.customer = build(:customer)
         expect(log).to be_invalid
-        expect(log.errors[:customer]).to include("must be blank when status is processing")
+        expect(log.errors[:customer]).to include('must be blank when status is processing')
       end
 
       it 'is invalid when status is failed and customer is present' do
         log.customer = build(:customer)
         log.mark_as_failed
         expect(log).to be_invalid
-        expect(log.errors[:customer]).to include("must be blank when status is failed")
+        expect(log.errors[:customer]).to include('must be blank when status is failed')
       end
     end
 
