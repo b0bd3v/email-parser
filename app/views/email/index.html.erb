@@ -1,4 +1,15 @@
 <div>
   <h1 class="font-bold text-4xl">Email#index</h1>
   <p>Find me in app/views/email/index.html.erb</p>
+
+  <% @emails.each do |email| %>
+    <div>
+      <h2><%= email.id %></h2>
+      <p><%= email.created_at %></p>
+      <p><%= email.updated_at %></p>
+      <p><%= email.file.name %></p>
+    </div>
+  <% end %>
+
+  <%= paginate @emails %>
 </div>

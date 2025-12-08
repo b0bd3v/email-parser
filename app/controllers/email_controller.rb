@@ -12,14 +12,7 @@ class EmailController < ApplicationController
     files = params.dig(:email, :files)
 
     if files.present?
-      # Reject blank strings which sometimes come with file inputs
-      files = files.reject(&:blank?)
-
-      created_count = 0
-      files.each do |file|
-        email = Email.new(file: file)
-        created_count += 1 if email.save
-      end
+      created_count = create_emails(files)
 
       if created_count.positive?
         redirect_to emails_path, status: :created, notice: "#{created_count} email(s) uploaded successfully."
@@ -35,9 +28,23 @@ class EmailController < ApplicationController
     end
   end
 
-  def index; end
+  def index
+    @emails = Email.all.page(params[:page]).per(params[:per_page] || 10)
+  end
 
   def show
     @email = Email.find(params[:id])
+  end
+
+  private
+
+  def create_emails(files)
+    files = files.reject(&:blank?)
+
+    created_count = 0
+    files.each do |file|
+      email = Email.new(file: file)
+      created_count += 1 if email.save
+    end
   end
 end
