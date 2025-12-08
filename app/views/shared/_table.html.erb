@@ -1,0 +1,59 @@
+<div class="w-full bg-gray-900/60 backdrop-blur-xl border border-gray-800 rounded-3xl shadow-2xl overflow-hidden flex flex-col">
+  <!-- Header Section -->
+  <% if local_assigns[:title] %>
+    <div class="px-8 py-6 border-b border-gray-800/50 flex justify-between items-center bg-gray-900/30">
+      <h2 class="text-xl font-bold text-white tracking-tight"><%= title %></h2>
+      <div class="text-sm text-gray-400">
+        <%= page_entries_info items, entry_name: 'item' %>
+      </div>
+    </div>
+  <% end %>
+
+  <!-- Table Wrapper -->
+  <div class="overflow-x-auto">
+    <table class="w-full text-left border-collapse">
+      <thead>
+        <tr class="text-xs uppercase text-gray-400 bg-gray-800/50 border-b border-gray-700/50">
+          <% columns.each do |col| %>
+            <th scope="col" class="px-6 py-4 font-semibold tracking-wider">
+              <%= col[:header] %>
+            </th>
+          <% end %>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-800/50">
+        <% if items.any? %>
+          <% items.each do |item| %>
+            <tr class="group hover:bg-gray-800/30 transition-colors duration-200">
+              <% columns.each do |col| %>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-300 group-hover:text-gray-200">
+                  <% if col[:proc] %>
+                    <%= col[:proc].call(item) %>
+                  <% else %>
+                    <%= item.public_send(col[:method]) %>
+                  <% end %>
+                </td>
+              <% end %>
+            </tr>
+          <% end %>
+        <% else %>
+          <tr>
+            <td colspan="<%= columns.length %>" class="px-6 py-12 text-center text-gray-500">
+              <svg class="w-12 h-12 mx-auto mb-4 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"></path>
+              </svg>
+              <p>No records found</p>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Pagination -->
+  <% if items.respond_to?(:total_pages) && items.total_pages > 1 %>
+    <div class="px-6 py-4 border-t border-gray-800/50 bg-gray-900/30 flex justify-center">
+      <%= paginate items %>
+    </div>
+  <% end %>
+</div>
