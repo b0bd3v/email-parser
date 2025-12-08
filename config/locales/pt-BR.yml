@@ -1,0 +1,181 @@
+---
+pt-BR:
+  component:
+    table:
+      no_records_found: No records found
+  datetime:
+    distance_in_words:
+      about_x_hours: "%{count} hora(s) atrás"
+      about_x_months: "%{count} mês(es) atrás"
+      about_x_years: "%{count} ano(s) atrás"
+      almost_x_years: "%{count} ano(s) atrás"
+      half_a_minute: "meio minuto atrás"
+      less_than_x_seconds: "menos de %{count} segundo(s) atrás"
+      less_than_x_minutes: "menos de %{count} minuto(s) atrás"
+      minutes: "%{count} minuto(s) atrás"
+      months: "%{count} mês(es) atrás"
+      seconds: "%{count} segundo(s) atrás"
+      x_days: "%{count} dia(s) atrás"
+      x_minutes: "%{count} minuto(s) atrás"
+      x_months: "%{count} mês(es) atrás"
+      x_years: "%{count} ano(s) atrás"
+  devise:
+    confirmations:
+      confirmed: Seu endereço de e-mail foi confirmado com sucesso.
+      send_instructions:
+        Você receberá um e-mail com instruções sobre como confirmar
+        seu endereço de e-mail em alguns minutos.
+      send_paranoid_instructions:
+        Se o seu endereço de e-mail existir em nosso banco
+        de dados, você receberá um e-mail com instruções sobre como confirmar seu
+        endereço de e-mail em alguns minutos.
+    failure:
+      already_authenticated: Você já está logado.
+      inactive: Sua conta ainda não foi ativada.
+      invalid: "%{authentication_keys} ou senha inválida."
+      last_attempt: Você tem mais uma tentativa antes de sua conta ser bloqueada.
+      locked: Sua conta está bloqueada.
+      not_found_in_database: "%{authentication_keys} ou senha inválida."
+      timeout: Sua sessão expirou. Por favor, faça login novamente para continuar.
+      unauthenticated: Você precisa fazer login ou se registrar antes de continuar.
+      unconfirmed: Você precisa confirmar seu endereço de e-mail antes de continuar.
+    mailer:
+      confirmation_instructions:
+        subject: Instruções de confirmação
+      email_changed:
+        subject: E-mail Alterado
+      password_change:
+        subject: Senha Alterada
+      reset_password_instructions:
+        subject: Instruções de redefinição de senha
+      unlock_instructions:
+        subject: Instruções de desbloqueio
+    omniauth_callbacks:
+      failure: Não foi possível autenticar você de %{kind} porque "%{reason}".
+      success: Autenticado com sucesso da conta %{kind}.
+    passwords:
+      button_send_instructions: Enviar instruções
+      image_description: Enviamos instruções para redefinir sua senha de forma segura.
+      image_title: Recuperação Segura
+      no_token:
+        Você não pode acessar esta página sem vir de um e-mail de redefinição
+        de senha. Se você veio de um e-mail de redefinição de senha, certifique-se
+        de usar a URL completa fornecida.
+      remember_your_password: Lembra sua senha?
+      send_instructions:
+        Você receberá um e-mail com instruções sobre como redefinir
+        sua senha em alguns minutos.
+      send_paranoid_instructions:
+        Se o seu endereço de e-mail existir em nosso banco
+        de dados, você receberá um link de recuperação de senha em seu endereço de
+        e-mail em alguns minutos.
+      sign_in: Entrar
+      subtitle: Insira seu endereço de e-mail para redefinir sua senha.
+      title: Esqueceu sua senha?
+      updated: Sua senha foi alterada com sucesso. Você está agora logado.
+      updated_not_active: Sua senha foi alterada com sucesso.
+    registrations:
+      destroyed:
+        Tchau! Sua conta foi cancelada com sucesso. Esperamos vê-lo novamente
+        em breve.
+      image_description:
+        Experimente o poder do processamento de e-mail baseado em
+        IA e otimize seu fluxo de trabalho.
+      image_title: Se inscreva
+      minimum_password_length: "(%{count} caracteres mínimo)"
+      password_confirmation: Confirmar Senha
+      signed_up: Bem-vindo! Você se registrou com sucesso.
+      signed_up_but_inactive:
+        Você se registrou com sucesso. No entanto, não pudemos
+        fazer seu login porque sua conta ainda não foi ativada.
+      signed_up_but_locked:
+        Você se registrou com sucesso. No entanto, não pudemos
+        fazer seu login porque sua conta está bloqueada.
+      signed_up_but_unconfirmed:
+        Uma mensagem com um link de confirmação foi enviada
+        para o seu endereço de e-mail. Por favor, siga o link para ativar sua conta.
+      subtitle: Se inscreva e comece a processar e-mails hoje
+      title: Criar Conta
+      update_needs_confirmation:
+        Você atualizou sua conta com sucesso, mas precisamos
+        verificar seu novo endereço de e-mail. Por favor, verifique seu e-mail e siga
+        o link de confirmação para confirmar seu novo endereço de e-mail.
+      updated: Sua conta foi atualizada com sucesso.
+      updated_but_not_signed_in:
+        Sua conta foi atualizada com sucesso, mas como sua
+        senha foi alterada, você precisa fazer login novamente.
+    sessions:
+      already_signed_out: Logout efetuado com sucesso.
+      new:
+        description: Por favor, insira seus detalhes para continuar
+        email: E-mail
+        forgot_password: Esqueceu a senha?
+        image_description:
+          Faça login para gerenciar seu fluxo de processamento de
+          e-mail de forma eficiente e segura.
+        image_title: Bem-vindo de volta
+        no_account: Não tem uma conta?
+        password: Senha
+        remember_me: Lembrar-me
+        sign_in: Entrar
+        sign_up: Cadastre-se gratuitamente
+      signed_in: Login efetuado com sucesso.
+      signed_out: Logout efetuado com sucesso.
+    shared:
+      links:
+        already_have_account: Já tem uma conta?
+        create_account: Crie uma conta
+        forgot_your_password: Esqueceu sua senha?
+        sign_in: Entrar
+        sign_out: Sair
+        sign_up: Cadastrar-se
+    unlocks:
+      send_instructions:
+        Você receberá um e-mail com instruções sobre como desbloquear
+        sua conta em alguns minutos.
+      send_paranoid_instructions:
+        Se sua conta existir, você receberá um e-mail com
+        instruções sobre como desbloqueá-la em alguns minutos.
+      unlocked:
+        Sua conta foi desbloqueada com sucesso. Por favor, faça login para
+        continuar.
+  email_controller:
+    actions: Ações
+    all_emails: Todos os emails
+    date: Data
+    emails:
+      cancel: Cancelar
+      click_to_upload_files: Clique para enviar arquivos
+      file_name: Nome do arquivo
+      import_your_email_files_to_automatically_extract_and_parse_data:
+        Importe seus
+        arquivos de email para extrair e analisar dados automaticamente
+      no_files_selected: Nenhum arquivo selecionado
+      or_drag_and_drop: Ou arraste e solte
+      process_file: Processar arquivo
+      supported_formats: "Formatos suportados: .eml, .txt"
+      upload_email: Upload email
+    errors:
+      messages:
+        prohibited_this_email_from_being_saved: Proibido salvar este email
+    file_name: Nome do arquivo
+    id: Id
+    manage_and_view_your_uploaded_email_files: Gerencie e veja seus arquivos de email enviados
+    no_files_selected: Nenhum arquivo selecionado
+    show_details: Mostrar detalhes
+    title: E-mails
+    upload_new: Upload novo
+    uploaded: Enviado
+  errors:
+    messages:
+      already_confirmed: já foi confirmado, por favor tente fazer login
+      confirmation_period_expired:
+        precisa ser confirmado dentro de %{period}, por
+        favor solicite um novo
+      expired: expirou, por favor solicite um novo
+      not_found: não encontrado
+      not_locked: não estava bloqueado
+      not_saved:
+        one: "1 erro impediu que este %{resource} fosse salvo:"
+        other: "%{count} erros impediram que este %{resource} fosse salvo:"
+  hello: Hello world

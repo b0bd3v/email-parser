@@ -1,1 +1,27 @@
 @import "tailwindcss";
+
+@layer base {
+  h1 {
+    @apply text-4xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-blue-300 via-indigo-400 to-purple-400 drop-shadow-sm pb-1;
+  }
+
+  h2 {
+    @apply text-3xl font-bold tracking-tight text-gray-100 pb-1;
+  }
+
+  h3 {
+    @apply text-2xl font-bold tracking-tight text-gray-200;
+  }
+
+  h4 {
+    @apply text-xl font-semibold tracking-tight text-gray-300;
+  }
+
+  h5 {
+    @apply text-lg font-semibold tracking-tight text-gray-300;
+  }
+
+  h6 {
+    @apply text-base font-semibold tracking-tight text-gray-400;
+  }
+}

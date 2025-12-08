@@ -16,7 +16,7 @@
       <%= render 'layouts/navbar' %>
     <% end %>
 
-    <main class="<%= user_signed_in? ? 'max-w-screen-xl mx-auto mt-24 px-5 flex flex-col' : 'w-full relative' %>">
+    <main class="<%= user_signed_in? ? 'max-w-screen-xl mx-auto mt-32 px-5 flex flex-col' : 'w-full relative' %>">
       <!-- Flash Messages / Toast Container -->
       <% if notice.present? || alert.present? %>
         <div class="fixed top-5 left-1/2 transform -translate-x-1/2 z-[100] w-full max-w-lg px-4 space-y-3 pointer-events-none">
@@ -53,7 +53,7 @@
       <% end %>
 
       <% if user_signed_in? %>
-        <div class="bg-gray-900/60 backdrop-blur-xl border border-white/10 rounded-3xl shadow-2xl p-8 min-h-[calc(100vh-8rem)]">
+        <div class="bg-gray-900/60 backdrop-blur-xl border border-gray-800/50 rounded-3xl shadow-2xl p-8 min-h-[calc(100vh-8rem)]">
           <%= yield %>
         </div>
       <% else %>

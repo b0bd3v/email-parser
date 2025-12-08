@@ -1,8 +1,8 @@
 <%= render layout: "devise/shared/auth_layout", locals: { 
-  title: "Forgot Password?", 
-  subtitle: "Enter your email to reset your password",
-  image_title: "Secure Recovery",
-  image_description: "We will send you instructions to reset your password securely."
+  title: t('devise.passwords.title'), 
+  subtitle: t('devise.passwords.subtitle'),
+  image_title: t('devise.passwords.image_title'),
+  image_description: t('devise.passwords.image_description')
 } do %>
   <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: "space-y-5" }) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
@@ -13,11 +13,11 @@
     </div>
 
     <div class="pt-2">
-      <%= f.submit "Send reset instructions", class: "w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-800 font-semibold rounded-xl text-sm px-5 py-3.5 text-center transition-all shadow-lg shadow-blue-900/30" %>
+      <%= f.submit t('devise.passwords.button_send_instructions'), class: "w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-800 font-semibold rounded-xl text-sm px-5 py-3.5 text-center transition-all shadow-lg shadow-blue-900/30" %>
     </div>
   <% end %>
 
   <div class="mt-8 text-center text-sm text-gray-500">
-    Remember your password? <a href="<%= new_session_path(resource_name) %>" class="font-medium text-blue-400 hover:text-blue-300 hover:underline">Log in</a>
+    <%= t('devise.passwords.remember_your_password') %> <a href="<%= new_session_path(resource_name) %>" class="font-medium text-blue-400 hover:text-blue-300 hover:underline"><%= t('devise.passwords.sign_in') %></a>
   </div>
 <% end %>

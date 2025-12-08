@@ -35,6 +35,9 @@ gem 'faraday', '~> 2.14'
 # Devise gem for authentication
 gem 'devise', '~> 4.9'
 
+# Pagination gem
+gem "kaminari", "~> 1.2"
+
 group :development, :test do
   gem 'debug', platforms: %i[mri mingw mswin x64_mingw]
   gem 'dotenv-rails'
@@ -48,6 +51,7 @@ group :development do
   gem 'annotate', '~> 3.2'
   gem 'rubocop', '~> 1.81'
   gem 'web-console'
+  gem "i18n-tasks", "~> 1.1"
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem 'rack-mini-profiler'
@@ -56,4 +60,3 @@ group :development do
   # gem 'spring'
 end
 
-gem "kaminari", "~> 1.2"

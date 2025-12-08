@@ -1,48 +1,53 @@
-<nav class="fixed top-6 left-1/2 transform -translate-x-1/2 w-full max-w-screen-xl px-8 z-50 transition-all duration-300">
-  <div class="flex flex-wrap items-center justify-between mx-auto">
-    <!-- Brand / Logo -->
-    <%= link_to root_path, class: "flex items-center space-x-3 group" do %>
-      <div class="relative w-10 h-10 flex items-center justify-center bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl shadow-lg shadow-indigo-500/30 group-hover:shadow-indigo-500/50 transition-all duration-300 transform group-hover:scale-105">
-        <!-- Abstract Email/AI Icon -->
-        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-        </svg>
-        <div class="absolute -top-1 -right-1 w-3 h-3 bg-cyan-400 rounded-full border-2 border-gray-900 animate-pulse"></div>
-      </div>
-      <span class="self-center text-xl font-bold tracking-tight text-white group-hover:text-indigo-300 transition-colors">
-        EmailParser
-      </span>
-    <% end %>
+<div class="fixed top-6 left-0 w-full z-50 pointer-events-none flex justify-center">
+  <div class="w-full max-w-screen-xl px-5">
+    <nav class="pointer-events-auto w-full transition-all duration-300 bg-gray-900/60 backdrop-blur-xl border border-gray-800/50 rounded-3xl py-4 shadow-2xl pl-4 pr-1">
+      <div class="flex flex-wrap items-center justify-between mx-auto">
+        <!-- Brand / Logo -->
+        <%= link_to root_path, class: "flex items-center space-x-3 group" do %>
+          <div class="relative w-10 h-10 flex items-center justify-center bg-gradient-to-br from-indigo-500 to-purple-600 rounded-xl shadow-lg shadow-indigo-500/30 group-hover:shadow-indigo-500/50 transition-all duration-300 transform group-hover:scale-105">
+            <!-- Abstract Email/AI Icon -->
+            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+            </svg>
+            <div class="absolute -top-1 -right-1 w-3 h-3 bg-cyan-400 rounded-full border-2 border-gray-900 animate-pulse"></div>
+          </div>
+          <span class="self-center text-xl font-bold tracking-tight text-white group-hover:text-indigo-300 transition-colors">
+            EmailParser
+          </span>
+        <% end %>
 
-    <!-- Desktop Navigation -->
-    <div class="hidden md:flex items-center space-x-1 bg-white/5 rounded-full p-1 border border-white/5">
-      <%= link_to "Upload", new_email_path, class: "px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 #{current_page?(new_email_path) ? 'bg-indigo-600 text-white shadow-lg' : 'text-gray-300 hover:bg-white/10 hover:text-white'}" %>
-      <%= link_to "Emails", emails_path, class: "px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 #{current_page?(emails_path) ? 'bg-indigo-600 text-white shadow-lg' : 'text-gray-300 hover:bg-white/10 hover:text-white'}" %>
-    </div>
-
-    <!-- User Actions -->
-    <div class="flex items-center space-x-4">
-      <% if user_signed_in? %>
-        <div class="hidden md:flex flex-col items-end mr-2">
-           <span class="text-xs text-gray-400 mb-2">Welcome,</span>
-           <span class="text-sm font-semibold text-white leading-none"><%= current_user.email.split('@').first %></span>
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex items-center space-x-1 bg-white/5 rounded-full p-1 border border-white/5">
+          <%= link_to "Upload", new_email_path, class: "px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 #{current_page?(new_email_path) ? 'bg-indigo-600 text-white shadow-lg' : 'text-gray-300 hover:bg-white/10 hover:text-white'}" %>
+          <%= link_to "Emails", emails_path, class: "px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 #{current_page?(emails_path) ? 'bg-indigo-600 text-white shadow-lg' : 'text-gray-300 hover:bg-white/10 hover:text-white'}" %>
         </div>
-        <%= button_to destroy_user_session_path, method: :delete, class: "group relative inline-flex items-center justify-center h-10 w-10 overflow-hidden rounded-full bg-gray-800 border border-gray-700 hover:border-red-500/50 transition-colors" do %>
-            <svg class="h-5 w-5 text-gray-400 group-hover:text-red-500 transition-colors transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+
+        <!-- User Actions -->
+        <div class="flex items-center space-x-4">
+          <% if user_signed_in? %>
+            <div class="hidden md:flex flex-col items-end mr-2">
+               <span class="text-xs text-gray-400 mb-2">Welcome,</span>
+               <span class="text-sm font-semibold text-white leading-none"><%= current_user.email.split('@').first %></span>
+            </div>
+            <%= button_to destroy_user_session_path, method: :delete, class: "group relative inline-flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-gray-800 border border-gray-700 hover:border-red-500/50 hover:bg-red-500/10 transition-all duration-200 cursor-pointer" do %>
+            <span class="text-sm font-medium text-gray-300 group-hover:text-red-400 transition-colors"><%= t('devise.shared.links.sign_out') %></span>
+            <svg class="h-4 w-4 text-gray-400 group-hover:text-red-400 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
             </svg>
         <% end %>
-      <% else %>
-        <%= link_to "Login", new_user_session_path, class: "text-white bg-indigo-600 hover:bg-indigo-700 focus:ring-4 focus:ring-indigo-300 font-medium rounded-xl text-sm px-5 py-2.5 transition-all shadow-lg hover:shadow-indigo-500/25" %>
-      <% end %>
+          <% else %>
+            <%= link_to "Login", new_user_session_path, class: "text-white bg-indigo-600 hover:bg-indigo-700 focus:ring-4 focus:ring-indigo-300 font-medium rounded-xl text-sm px-5 py-2.5 transition-all shadow-lg hover:shadow-indigo-500/25" %>
+          <% end %>
 
-      <!-- Mobile Menu Button -->
-      <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-400 rounded-lg md:hidden hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
-          <span class="sr-only">Open main menu</span>
-          <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
-          </svg>
-      </button>
-    </div>
+          <!-- Mobile Menu Button -->
+          <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-400 rounded-lg md:hidden hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
+              <span class="sr-only">Open main menu</span>
+              <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+              </svg>
+          </button>
+        </div>
+      </div>
+    </nav>
   </div>
-</nav>
+</div>

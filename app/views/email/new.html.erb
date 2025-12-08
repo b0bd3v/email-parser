@@ -1,14 +1,14 @@
 <div class="flex flex-col items-center justify-center w-full h-full flex-grow">
   <div class="text-center mb-10">
-    <h1 class="text-4xl font-bold text-white mb-3 tracking-tight">Upload Email</h1>
-    <p class="text-gray-400 text-lg">Import your email files to automatically extract and parse data.</p>
+    <h1 class="text-4xl font-bold text-white mb-3 tracking-tight"><%= t('email_controller.emails.upload_email') %></h1>
+    <p class="text-gray-400 text-lg"><%= t('email_controller.emails.import_your_email_files_to_automatically_extract_and_parse_data') %></p>
   </div>
 
   <%= form_with(model: @email, url: emails_path, local: true, class: "w-full max-w-3xl") do |f| %>
     
     <% if @email.errors.any? %>
       <div class="mb-6 p-4 rounded-xl bg-red-900/20 border border-red-500/30 text-red-200 text-sm">
-        <h3 class="font-bold mb-1"><%= pluralize(@email.errors.count, "error") %> prohibited this email from being saved:</h3>
+        <h3 class="font-bold mb-1"><%= pluralize(@email.errors.count, "error") %> <%= t('email_controller.errors.messages.prohibited_this_email_from_being_saved') %>:</h3>
         <ul class="list-disc pl-5 space-y-1">
           <% @email.errors.full_messages.each do |message| %>
             <li><%= message %></li>
@@ -30,8 +30,8 @@
               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
             </svg>
           </div>
-          <p class="mb-2 text-lg text-gray-300 group-hover:text-white transition-colors"><span class="font-semibold text-indigo-400">Click to upload files</span> or drag and drop</p>
-          <p class="text-sm text-gray-500 group-hover:text-gray-400 transition-colors">Supported formats: .eml, .txt</p>
+          <p class="mb-2 text-lg text-gray-300 group-hover:text-white transition-colors"><span class="font-semibold text-indigo-400"><%= t('email_controller.emails.click_to_upload_files') %></span> <%= t('email_controller.emails.or_drag_and_drop') %></p>
+          <p class="text-sm text-gray-500 group-hover:text-gray-400 transition-colors"><%= t('email_controller.emails.supported_formats') %></p>
         </div>
 
         <!-- Selected File State -->
@@ -41,9 +41,9 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
             </svg>
           </div>
-          <p class="text-lg text-white font-medium mb-1">Files Selected:</p>
-          <p data-upload-target="filename" class="text-indigo-400 font-mono bg-indigo-900/30 px-3 py-1 rounded-md border border-indigo-500/30 text-center max-w-sm truncate">...files...</p>
-          <p class="text-xs text-gray-500 mt-4">Click to change selection</p>
+          <p class="text-lg text-white font-medium mb-1"><%= t('email_controller.emails.file_name') %>:</p>
+          <p data-upload-target="filename" class="text-indigo-400 font-mono bg-indigo-900/30 px-3 py-1 rounded-md border border-indigo-500/30 text-center max-w-sm truncate"><%= t('email_controller.emails.no_files_selected') %></p>
+          <p class="text-xs text-gray-500 mt-4"><%= t('email_controller.emails.no_files_selected') %></p>
         </div>
         
         <%= f.file_field :files, multiple: true, class: "hidden", name: "email[files][]", data: { upload_target: "input", action: "change->upload#handleFileSelect" } %>
@@ -51,8 +51,8 @@
     </div>
 
     <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-      <%= link_to "Cancel", emails_path, class: "px-6 py-3 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition-all w-full sm:w-auto text-center" %>
-      <%= f.submit "Process File", class: "w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white font-semibold rounded-xl shadow-lg shadow-indigo-500/30 hover:shadow-indigo-500/50 transform hover:-translate-y-0.5 transition-all text-center cursor-pointer" %>
+      <%= link_to t('email_controller.emails.cancel'), emails_path, class: "px-6 py-3 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition-all w-full sm:w-auto text-center" %>
+      <%= f.submit t('email_controller.emails.process_file'), class: "w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white font-semibold rounded-xl shadow-lg shadow-indigo-500/30 hover:shadow-indigo-500/50 transform hover:-translate-y-0.5 transition-all text-center cursor-pointer" %>
     </div>
   <% end %>
 </div>

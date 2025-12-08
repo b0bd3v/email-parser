@@ -15,7 +15,7 @@ class EmailController < ApplicationController
       created_count = create_emails(files)
 
       if created_count.positive?
-        redirect_to emails_path, status: :created, notice: "#{created_count} email(s) uploaded successfully."
+        redirect_to emails_path, notice: "#{created_count} email(s) uploaded successfully."
       else
         @email = Email.new
         flash.now[:alert] = 'Failed to upload files.'
@@ -23,13 +23,13 @@ class EmailController < ApplicationController
       end
     else
       @email = Email.new
-      flash.now[:alert] = 'No files selected.'
+      flash.now[:alert] = t('email_controller.no_files_selected')
       render :new, status: :unprocessable_entity
     end
   end
 
   def index
-    @emails = Email.all.page(params[:page]).per(params[:per_page] || 10)
+    @emails = Email.order(created_at: :desc).page(params[:page]).per(params[:per_page] || 10)
   end
 
   def show
@@ -46,5 +46,7 @@ class EmailController < ApplicationController
       email = Email.new(file: file)
       created_count += 1 if email.save
     end
+
+    created_count
   end
 end

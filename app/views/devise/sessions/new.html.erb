@@ -1,19 +1,19 @@
 <%= render layout: "devise/shared/auth_layout", locals: { 
-  title: "Sign In", 
-  subtitle: "Please enter your details to continue",
-  image_title: "Welcome Back",
-  image_description: "Log in to manage your email parsing workflow efficiently and securely."
+  title: t('devise.sessions.new.sign_in'), 
+  subtitle: t('devise.sessions.new.description'),
+  image_title: t('devise.sessions.new.image_title'),
+  image_description: t('devise.sessions.new.image_description')
 } do %>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "space-y-6" }) do |f| %>
     <div>
-      <%= f.label :email, class: "block mb-2 text-sm font-medium text-gray-300" %>
+      <%= f.label :email, t('devise.sessions.new.email'), class: "block mb-2 text-sm font-medium text-gray-300" %>
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "bg-gray-800 border border-gray-700 text-white text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full p-3.5 placeholder-gray-500 transition-colors" %>
     </div>
 
     <div>
        <div class="flex items-center justify-between mb-2">
-         <%= f.label :password, class: "text-sm font-medium text-gray-300" %>
-         <a href="<%= new_password_path(resource_name) %>" class="text-sm font-medium text-blue-400 hover:text-blue-300 hover:underline">Forgot password?</a>
+         <%= f.label :password, t('devise.sessions.new.password'), class: "text-sm font-medium text-gray-300" %>
+         <a href="<%= new_password_path(resource_name) %>" class="text-sm font-medium text-blue-400 hover:text-blue-300 hover:underline"><%= t('devise.sessions.new.forgot_password') %></a>
        </div>
        <%= f.password_field :password, autocomplete: "current-password", class: "bg-gray-800 border border-gray-700 text-white text-sm rounded-xl focus:ring-blue-500 focus:border-blue-500 block w-full p-3.5 placeholder-gray-500 transition-colors" %>
     </div>
@@ -24,17 +24,17 @@
           <%= f.check_box :remember_me, class: "w-4 h-4 border border-gray-600 rounded bg-gray-700 focus:ring-3 focus:ring-blue-600 ring-offset-gray-800" %>
         </div>
         <div class="ml-3 text-sm">
-          <%= f.label :remember_me, class: "text-gray-300 select-none" %>
+          <%= f.label :remember_me, t('devise.sessions.new.remember_me'), class: "text-gray-300 select-none" %>
         </div>
       </div>
     <% end %>
 
     <div>
-      <%= f.submit "Log in", class: "w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-800 font-semibold rounded-xl text-sm px-5 py-3.5 text-center transition-all shadow-lg shadow-blue-900/30" %>
+      <%= f.submit t('devise.sessions.new.sign_in'), class: "w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-800 font-semibold rounded-xl text-sm px-5 py-3.5 text-center transition-all shadow-lg shadow-blue-900/30" %>
     </div>
   <% end %>
 
   <div class="mt-8 text-center text-sm text-gray-500">
-    Don't have an account? <a href="<%= new_registration_path(resource_name) %>" class="font-medium text-blue-400 hover:text-blue-300 hover:underline">Sign up for free</a>
+    <%= t('devise.sessions.new.no_account') %> <a href="<%= new_registration_path(resource_name) %>" class="font-medium text-blue-400 hover:text-blue-300 hover:underline"><%= t('devise.sessions.new.sign_up') %></a>
   </div>
 <% end %>
