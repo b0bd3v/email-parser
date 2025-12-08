@@ -20,6 +20,7 @@
         <div class="hidden md:flex items-center space-x-1 bg-white/5 rounded-full p-1 border border-white/5">
           <%= link_to "Upload", new_email_path, class: "px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 #{current_page?(new_email_path) ? 'bg-indigo-600 text-white shadow-lg' : 'text-gray-300 hover:bg-white/10 hover:text-white'}" %>
           <%= link_to "Emails", emails_path, class: "px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 #{current_page?(emails_path) ? 'bg-indigo-600 text-white shadow-lg' : 'text-gray-300 hover:bg-white/10 hover:text-white'}" %>
+          <%= link_to "Email Parse Logs", email_parse_logs_path, class: "px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 #{current_page?(email_parse_logs_path) ? 'bg-indigo-600 text-white shadow-lg' : 'text-gray-300 hover:bg-white/10 hover:text-white'}" %>
         </div>
 
         <!-- User Actions -->

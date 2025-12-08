@@ -51,7 +51,7 @@ class GeminiClient
     return {} unless content
 
     clean_content = content.gsub(/```json\n?|\n?```/, '').strip
-    JSON.parse(clean_content)
+    JSON.parse(clean_content, symbolize_names: true)
   rescue JSON::ParserError => e
     Rails.logger.error("Failed to parse JSON from Gemini response: #{e.message}")
     {}

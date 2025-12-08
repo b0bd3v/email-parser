@@ -5,6 +5,7 @@
 
 Rails.application.routes.draw do
   devise_for :users
+  resources :email_parse_logs, controller: :email_parse_log, only: %i[index show retry]
   resources :emails, controller: :email, only: %i[index new create show]
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

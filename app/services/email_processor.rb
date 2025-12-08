@@ -52,6 +52,8 @@ class EmailProcessor
       EmailParser::PartnerA.new(email_from_file).parse
     when 'contato@parceiroB.com'
       EmailParser::PartnerB.new(email_from_file).parse
+    else
+      EmailParser::UndefinedOrigin.new(email_from_file).parse
     end
   end
 

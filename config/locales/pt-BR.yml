@@ -2,16 +2,80 @@
 pt-BR:
   component:
     table:
-      no_records_found: No records found
+      no_records_found: Nenhum registro encontrado
+  activerecord:
+    models:
+      active_storage/attachment: Anexo
+      active_storage/blob: Blob
+      active_storage/variant_record: Registro de Variante
+      customer: Cliente
+      email: E-mail
+      email_parse_log: Log de Processamento de E-mail
+      user: Usuário
+    attributes:
+      active_storage/attachment:
+        blob_id: Blob
+        created_at: Criado em
+        id: Id
+        name: Nome
+        record_id: Registro
+        record_type: Tipo de registro
+      active_storage/blob:
+        byte_size: Tamanho em bytes
+        checksum: Checksum
+        content_type: Tipo de conteúdo
+        created_at: Criado em
+        filename: Nome do arquivo
+        id: Id
+        key: Chave
+        metadata: Metadados
+        service_name: Nome do serviço
+      active_storage/variant_record:
+        blob_id: Blob
+        id: Id
+        variation_digest: Resumo da variação
+      customer:
+        created_at: Criado em
+        email: E-mail
+        email_subject: Assunto do e-mail
+        id: Id
+        name: Nome
+        phone: Telefone
+        product_code: Código do produto
+        updated_at: Atualizado em
+      email:
+        created_at: Criado em
+        id: Id
+        updated_at: Atualizado em
+      email_parse_log:
+        created_at: Criado em
+        customer_id: Cliente
+        error_message: Mensagem de erro
+        file_name: Nome do arquivo
+        id: Id
+        parsed_data: Dados processados
+        partner_email: E-mail do parceiro
+        raw_data: Dados brutos
+        raw_file_path: Caminho do arquivo bruto
+        status: Status
+        updated_at: Atualizado em
+      user:
+        created_at: Criado em
+        email: E-mail
+        encrypted_password: Senha criptografada
+        id: Id
+        remember_created_at: Lembrar criado em
+        reset_password_sent_at: Token de redefinição de senha enviado em
+        reset_password_token: Token de redefinição de sen
   datetime:
     distance_in_words:
       about_x_hours: "%{count} hora(s) atrás"
       about_x_months: "%{count} mês(es) atrás"
       about_x_years: "%{count} ano(s) atrás"
       almost_x_years: "%{count} ano(s) atrás"
-      half_a_minute: "meio minuto atrás"
-      less_than_x_seconds: "menos de %{count} segundo(s) atrás"
-      less_than_x_minutes: "menos de %{count} minuto(s) atrás"
+      half_a_minute: meio minuto atrás
+      less_than_x_minutes: menos de %{count} minuto(s) atrás
+      less_than_x_seconds: menos de %{count} segundo(s) atrás
       minutes: "%{count} minuto(s) atrás"
       months: "%{count} mês(es) atrás"
       seconds: "%{count} segundo(s) atrás"
@@ -160,11 +224,25 @@ pt-BR:
         prohibited_this_email_from_being_saved: Proibido salvar este email
     file_name: Nome do arquivo
     id: Id
-    manage_and_view_your_uploaded_email_files: Gerencie e veja seus arquivos de email enviados
+    manage_and_view_your_uploaded_email_files:
+      Gerencie e veja seus arquivos de email
+      enviados
     no_files_selected: Nenhum arquivo selecionado
     show_details: Mostrar detalhes
     title: E-mails
     upload_new: Upload novo
+    uploaded: Enviado
+  email_parse_log_controller:
+    actions: Ações
+    all_email_parse_logs: Todos os logs de parse de email
+    customer: Customer
+    date: Data
+    file_name: Nome do arquivo
+    manage_and_view_your_email_parse_logs: Gerencie e veja seus logs de parse de email
+    show_details: Mostrar detalhes
+    status: Status
+    title: Logs
+    upload_new: Upload new
     uploaded: Enviado
   errors:
     messages:

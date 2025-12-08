@@ -44,7 +44,7 @@ RSpec.describe GeminiClient do
       end
 
       it 'parses the JSON response from Gemini' do
-        expect(client.parse).to eq({ 'name' => 'John Doe' })
+        expect(client.parse).to eq({ name: 'John Doe' })
       end
     end
 

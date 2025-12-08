@@ -20,6 +20,7 @@ class EmailParseLog < ApplicationRecord
   include AASM
 
   belongs_to :customer, optional: true
+  belongs_to :email, optional: true
 
   ABSENCE_MESSAGE = ->(object, _data) { "must be blank when status is #{object.status}" }
 

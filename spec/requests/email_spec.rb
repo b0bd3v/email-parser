@@ -3,12 +3,21 @@
 require 'rails_helper'
 
 describe 'Emails', type: :request do
+  let(:user) { create(:user) }
+
+  before { sign_in user }
+
   describe 'POST /create' do
-    let(:file) { fixture_file_upload(Rails.root.join('spec', 'fixtures', 'emails', 'email4.eml'), 'application/eml') }
+    let(:file_four) do
+      fixture_file_upload(Rails.root.join('spec', 'fixtures', 'emails', 'email4.eml'), 'application/eml')
+    end
+    let(:file_five) do
+      fixture_file_upload(Rails.root.join('spec', 'fixtures', 'emails', 'email5.eml'), 'application/eml')
+    end
 
     it 'should return http success' do
-      post emails_path, params: { email: { file: file } }
-      expect(response).to have_http_status(:created)
+      post emails_path, params: { email: { files: [file_four, file_five] } }
+      expect(response).to have_http_status(:redirect)
     end
   end
 

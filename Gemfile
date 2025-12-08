@@ -38,6 +38,10 @@ gem 'devise', '~> 4.9'
 # Pagination gem
 gem "kaminari", "~> 1.2"
 
+# I18n gem
+gem "rails-i18n", "~> 7.0"
+
+
 group :development, :test do
   gem 'debug', platforms: %i[mri mingw mswin x64_mingw]
   gem 'dotenv-rails'
@@ -59,4 +63,3 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem 'spring'
 end
-
