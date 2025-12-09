@@ -45,7 +45,7 @@ class EmailController < ApplicationController
       email = Email.new(file: file)
       created_count += 1 if email.save
 
-      ProcessEmailJob.perform_now(email.id)
+      ProcessEmailJob.perform_later(email.id)
     end
 
     created_count
