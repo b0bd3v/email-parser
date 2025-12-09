@@ -11,7 +11,7 @@
   
   variant_classes = case variant.to_sym
   when :primary
-    "px-6 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-xl shadow-lg shadow-blue-500/30 transform hover:-translate-y-0.5"
+    "px-6 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-500 hover:via-indigo-500 hover:to-purple-500 text-white font-medium rounded-xl shadow-lg shadow-blue-500/30 transform hover:-translate-y-0.5"
   when :secondary
     "px-5 bg-gray-800 hover:bg-gray-700 text-gray-300 border border-gray-700 rounded-lg shadow-sm"
   when :danger
