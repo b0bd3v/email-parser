@@ -1,10 +1,7 @@
 <%
   new_path ||= nil
   new_text ||= nil
-%>
-<%
-  new_path ||= nil
-  new_text ||= nil
+  show_icon ||= false
 %>
 <div class="flex items-center justify-between">
   <div>
@@ -13,7 +10,10 @@
   </div>
   <% if new_path %>
     <%= render "shared/button", variant: :primary, path: new_path do %>
-      <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+      <% if show_icon %>
+        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+      <% end %>
+      
       <%= new_text %>
     <% end %>
   <% end %>
