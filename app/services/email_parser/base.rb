@@ -16,7 +16,7 @@ module EmailParser
     private
 
     def value(regex)
-      mail.body.to_s.match(regex)&.[](1)&.strip
+      mail.body.decoded.force_encoding('UTF-8').match(regex)&.[](1)&.strip
     end
   end
 end

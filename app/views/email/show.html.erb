@@ -1,1 +1,75 @@
-<%= @email.inspect %>
+<%= render "shared/page_title", title: t("email_controller.title"), description: t("email_controller.file_information") %>
+
+<div class="mt-8">
+  <%= render layout: "shared/card" do %>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+      <!-- File Information Column -->
+      <div class="space-y-6">
+        <h2 class="text-xl font-semibold text-gray-200 flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-3 text-blue-500">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+          </svg>
+          <%= t("email_controller.file_information") %>
+        </h2>
+        
+        <div class="space-y-4 pl-4 border-l-2 border-gray-800 ml-2.5">
+          <div class="pl-4 group/item">
+            <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1"><%= t("email_controller.filename") %></label>
+            <div class="flex items-center text-gray-300 group-hover/item:text-white transition-colors">
+              <span class="text-lg"><%= @email.file.filename %></span>
+            </div>
+          </div>
+
+          <div class="pl-4 group/item">
+            <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1"><%= t("email_controller.size") %></label>
+            <div class="flex items-center text-gray-300 group-hover/item:text-white transition-colors">
+              <span class="text-lg"><%= number_to_human_size(@email.file.byte_size) %></span>
+            </div>
+          </div>
+
+          <div class="pl-4 group/item">
+            <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1"><%= t("email_controller.uploaded_at") %></label>
+            <div class="flex items-center text-gray-300 group-hover/item:text-white transition-colors">
+              <span class="text-lg"><%= @email.created_at.strftime("%d/%m/%Y %H:%M") %></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="pt-4">
+           <%= render "shared/button", variant: :primary, path: rails_blob_path(@email.file, disposition: "attachment") do %>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M12 12.75l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <%= t("email_controller.download") %>
+           <% end %>
+        </div>
+      </div>
+
+      <!-- Parse Logs Column -->
+      <div class="space-y-6">
+        <h2 class="text-xl font-semibold text-gray-200 flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-3 text-purple-500">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 00.75-.75 2.25 2.25 0 00-.1-.664m-5.8 0A2.251 2.251 0 0113.5 2.25H15c1.012 0 1.867.668 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25zM6.75 12h.008v.008H6.75V12zm0 3h.008v.008H6.75V15zm0 3h.008v.008H6.75V18z" />
+          </svg>
+          <%= t("email_controller.associated_logs") %>
+        </h2>
+        
+        <div class="space-y-4 pl-4 border-l-2 border-gray-800 ml-2.5">
+          <% if @email.email_parse_logs.any? %>
+             <% @email.email_parse_logs.each do |log| %>
+               <div class="pl-4 group/item">
+                  <div class="flex items-center justify-between mb-1">
+                     <span class="text-xs font-semibold text-gray-500 uppercase tracking-wider"><%= log.created_at.strftime("%d/%m %H:%M") %></span>
+                     <%= render "shared/label", text: log.status %>
+                  </div>
+                  <%= link_to log.file_name, email_parse_log_path(log), class: "text-blue-400 hover:text-blue-300 hover:underline transition-colors block truncate" %>
+               </div>
+             <% end %>
+          <% else %>
+             <p class="text-gray-500 pl-4 italic"><%= t("email_controller.no_logs") %></p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

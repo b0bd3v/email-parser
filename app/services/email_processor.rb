@@ -2,8 +2,8 @@
 
 # Processes incoming emails.
 class EmailProcessor
-  def initialize(file_path)
-    @file_path = file_path
+  def initialize(email)
+    @email = email
   end
 
   def process
@@ -16,6 +16,7 @@ class EmailProcessor
     end
   rescue StandardError
     @email_parse_log&.mark_as_failed!
+
     raise
   end
 
@@ -38,26 +39,13 @@ class EmailProcessor
   end
 
   def email_parse_log
-    @email_parse_log ||= begin
-      email = create_email_record
-      EmailParseLog.create(
-        email: email,
-        raw_data: email_from_file.body,
-        partner_email: partner_email,
-        file_name: File.basename(@file_path),
-        raw_file_path: @file_path
-      )
-    end
-  end
-
-  def create_email_record
-    email = Email.new
-    email.file.attach(
-      io: File.open(@file_path),
-      filename: File.basename(@file_path)
+    @email_parse_log ||= EmailParseLog.create(
+      email: @email,
+      raw_data: email_from_file.body.decoded.force_encoding('UTF-8'),
+      partner_email: partner_email,
+      file_name: @email.file.filename.to_s,
+      raw_file_path: ActiveStorage::Blob.service.path_for(@email.file.key)
     )
-    email.save!
-    email
   end
 
   def parsed_data
@@ -72,7 +60,7 @@ class EmailProcessor
   end
 
   def email_from_file
-    @email_from_file ||= Mail.new(File.read(@file_path))
+    @email_from_file ||= Mail.new(@email.file.download)
   end
 
   def partner_email

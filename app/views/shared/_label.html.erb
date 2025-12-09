@@ -1,0 +1,15 @@
+<%
+  status_color = case text.to_s.downcase
+                 when 'success'
+                   'bg-emerald-500/10 text-emerald-300 border-emerald-500/20'
+                 when 'failed'
+                   'bg-rose-500/10 text-rose-300 border-rose-500/20'
+                 when 'processing'
+                   'bg-blue-500/10 text-blue-300 border-blue-500/20'
+                 else
+                   'bg-slate-500/10 text-slate-300 border-slate-500/20'
+                 end
+%>
+<span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium backdrop-blur-md border shadow-sm <%= status_color %>">
+  <%= I18n.t("shared.status.#{text}", default: text.to_s.humanize) %>
+</span>

@@ -4,7 +4,8 @@
 class ProcessEmailJob < ApplicationJob
   queue_as :default
 
-  def perform(file_path)
-    EmailProcessor.new(file_path).process
+  def perform(email_id)
+    email = Email.find(email_id)
+    EmailProcessor.new(email).process
   end
 end

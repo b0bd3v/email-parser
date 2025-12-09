@@ -51,8 +51,13 @@
     </div>
 
     <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-      <%= link_to t('email_controller.emails.cancel'), emails_path, class: "px-6 py-3 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition-all w-full sm:w-auto text-center" %>
-      <%= f.submit t('email_controller.emails.process_file'), class: "w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white font-semibold rounded-xl shadow-lg shadow-indigo-500/30 hover:shadow-indigo-500/50 transform hover:-translate-y-0.5 transition-all text-center cursor-pointer" %>
+      <%= render "shared/button", variant: :ghost, path: emails_path, extra_classes: "!text-gray-400 hover:!text-white w-full sm:w-auto" do %>
+        <%= t('email_controller.emails.cancel') %>
+      <% end %>
+
+      <%= render "shared/button", variant: :primary, type: "submit", extra_classes: "w-full sm:w-auto" do %>
+        <%= t('email_controller.emails.process_file') %>
+      <% end %>
     </div>
   <% end %>
 </div>

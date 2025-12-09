@@ -4,7 +4,9 @@ require 'rails_helper'
 
 describe EmailParser::Base do
   let(:mail) do
-    double('Mail', body: double('Body', to_s: File.read(Rails.root.join('spec', 'fixtures', 'emails', 'email4.eml'))))
+    double('Mail',
+           body: double('Body', decoded: File.read(Rails.root.join('spec', 'fixtures', 'emails', 'email4.eml')),
+                                to_s: File.read(Rails.root.join('spec', 'fixtures', 'emails', 'email4.eml'))))
   end
 
   describe '#value' do

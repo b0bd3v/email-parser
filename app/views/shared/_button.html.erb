@@ -1,0 +1,36 @@
+<%
+  # Defaults
+  variant ||= :primary
+  path ||= nil
+  data ||= {}
+  method ||= nil
+  extra_classes ||= ""
+  type ||= "button" # for button tag type attribute
+
+  base_classes = "inline-flex items-center justify-center transition-all duration-200 focus:outline-none h-11 cursor-pointer whitespace-nowrap"
+  
+  variant_classes = case variant.to_sym
+  when :primary
+    "px-6 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-xl shadow-lg shadow-blue-500/30 transform hover:-translate-y-0.5"
+  when :secondary
+    "px-5 bg-gray-800 hover:bg-gray-700 text-gray-300 border border-gray-700 rounded-lg shadow-sm"
+  when :danger
+    "px-5 bg-red-500 hover:bg-red-600 text-white rounded-lg shadow-sm transition-colors font-medium"
+  when :ghost
+    "px-4 text-indigo-400 hover:text-indigo-300 font-medium rounded hover:bg-white/5"
+  else
+    ""
+  end
+  
+  final_classes = "#{base_classes} #{variant_classes} #{extra_classes}"
+%>
+
+<% if path %>
+  <%= link_to path, class: final_classes, data: data, method: method do %>
+    <%= yield %>
+  <% end %>
+<% else %>
+  <button type="<%= type %>" class="<%= final_classes %>" data-action="<%= data[:action] %>">
+    <%= yield %>
+  </button>
+<% end %>

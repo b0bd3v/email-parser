@@ -45,7 +45,7 @@ class EmailController < ApplicationController
       email = Email.new(file: file)
       created_count += 1 if email.save
 
-      ProcessEmailJob.perform_later(ActiveStorage::Blob.service.path_for(email.file.key))
+      ProcessEmailJob.perform_now(email.id)
     end
 
     created_count

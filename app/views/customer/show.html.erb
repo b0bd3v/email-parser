@@ -1,103 +1,74 @@
-<div class="max-w-4xl mx-auto space-y-8">
-  <!-- Header -->
-  <div class="flex items-center justify-between animate-fade-in-down">
-    <div class="space-y-1">
-      <h1 class="text-4xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-500 drop-shadow-sm">
-        <%= @customer.name %>
-      </h1>
-      <p class="text-gray-400 font-medium ml-1">Customer Profile</p>
-    </div>
-    
-    <%= link_to customers_path, class: "group flex items-center px-5 py-2.5 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 text-gray-300 transition-all duration-300 backdrop-blur-md shadow-lg hover:shadow-indigo-500/20" do %>
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
-      </svg>
-      Back to List
-    <% end %>
-  </div>
+<div class="space-y-6">
+  <%= render "shared/page_title", 
+             title: @customer.name, 
+             description: t("customer_controller.description"),
+             new_path: customers_path,
+             new_text: t("customer_controller.back_to_list") %>
 
-  <!-- Main Card -->
-  <div class="relative group animate-fade-in-up animation-delay-150">
-    <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-[2rem] blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
-    <div class="relative bg-gray-900/60 backdrop-blur-xl border border-gray-800/50 rounded-[1.75rem] shadow-2xl overflow-hidden p-8 md:p-10">
-      
-      <!-- Grid Layout -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+  <%= render layout: "shared/card" do %>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+      <div class="space-y-6">
+        <h2 class="text-xl font-semibold text-gray-200 flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-3 text-blue-500">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+          </svg>
+          <%= t("customer_controller.contact_information") %>
+        </h2>
         
-        <!-- Contact Info Section -->
-        <div class="space-y-6">
-          <h2 class="text-xl font-semibold text-gray-200 flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-3 text-blue-500">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
-            </svg>
-            Contact Information
-          </h2>
-          
-          <div class="space-y-4 pl-4 border-l-2 border-gray-800 ml-2.5">
-            <div class="pl-4 group/item">
-              <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Email Address</label>
-              <div class="flex items-center text-gray-300 group-hover/item:text-white transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-3 text-gray-600 group-hover/item:text-blue-400 transition-colors">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
-                </svg>
-                <span class="text-lg"><%= @customer.email.presence || 'N/A' %></span>
-              </div>
+        <div class="space-y-4 pl-4 border-l-2 border-gray-800 ml-2.5">
+          <div class="pl-4 group/item">
+            <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1"><%= t("customer_controller.email_address") %></label>
+            <div class="flex items-center text-gray-300 group-hover/item:text-white transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-3 text-gray-600 group-hover/item:text-blue-400 transition-colors">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+              </svg>
+              <span class="text-lg"><%= @customer.email.presence || 'N/A' %></span>
             </div>
+          </div>
 
-            <div class="pl-4 group/item">
-              <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Phone Number</label>
-              <div class="flex items-center text-gray-300 group-hover/item:text-white transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-3 text-gray-600 group-hover/item:text-green-400 transition-colors">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
-                </svg>
-                <span class="text-lg"><%= @customer.phone.presence || 'N/A' %></span>
-              </div>
+          <div class="pl-4 group/item">
+            <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1"><%= t("customer_controller.phone_number") %></label>
+            <div class="flex items-center text-gray-300 group-hover/item:text-white transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-3 text-gray-600 group-hover/item:text-green-400 transition-colors">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+              </svg>
+              <span class="text-lg"><%= @customer.phone.presence || 'N/A' %></span>
             </div>
           </div>
         </div>
-
-        <!-- Product Specs Section -->
-        <div class="space-y-6">
-          <h2 class="text-xl font-semibold text-gray-200 flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-3 text-purple-500">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z" />
-              <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6Z" />
-            </svg>
-            Product Details
-          </h2>
-          
-          <div class="space-y-4 pl-4 border-l-2 border-gray-800 ml-2.5">
-            <div class="pl-4 group/item">
-              <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Product Code</label>
-              <div class="flex items-center text-gray-300 group-hover/item:text-white transition-colors">
-                <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-purple-500/10 text-purple-400 border border-purple-500/20 group-hover/item:bg-purple-500/20 transition-all font-mono">
-                  <%= @customer.product_code %>
-                </span>
-              </div>
+      </div>
+      <div class="space-y-6">
+        <h2 class="text-xl font-semibold text-gray-200 flex items-center">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-3 text-purple-500">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6Z" />
+          </svg>
+          <%= t("customer_controller.product_details") %>
+        </h2>
+        
+        <div class="space-y-4 pl-4 border-l-2 border-gray-800 ml-2.5">
+          <div class="pl-4 group/item">
+            <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1"><%= t("customer_controller.product_code") %></label>
+            <div class="flex items-center text-gray-300 group-hover/item:text-white transition-colors">
+              <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-purple-500/10 text-purple-400 border border-purple-500/20 group-hover/item:bg-purple-500/20 transition-all font-mono">
+                <%= @customer.product_code %>
+              </span>
             </div>
+          </div>
 
-            <div class="pl-4 group/item">
-              <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Email Subject</label>
-              <div class="text-gray-300 group-hover/item:text-white transition-colors text-lg leading-relaxed">
-                <%= @customer.email_subject %>
-              </div>
+          <div class="pl-4 group/item">
+            <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1"><%= t("customer_controller.email_subject") %></label>
+            <div class="text-gray-300 group-hover/item:text-white transition-colors text-lg leading-relaxed">
+              <%= @customer.email_subject %>
             </div>
           </div>
         </div>
-
       </div>
-
-      <!-- Footer Info -->
-      <div class="mt-10 pt-6 border-t border-gray-800 flex items-center justify-between text-sm text-gray-500">
-         <div class="flex items-center">
-            <span class="w-2 h-2 rounded-full bg-green-500 mr-2 animate-pulse"></span>
-            Profile Active
-         </div>
-         <div>
-            Created <time datetime="<%= @customer.created_at.to_s %>" class="font-medium text-gray-400"><%= @customer.created_at.strftime("%B %d, %Y") %></time>
-         </div>
-      </div>
-
     </div>
-  </div>
+    <div class="mt-10 pt-6 flex items-right justify-end text-sm text-gray-500">
+       <div>
+          <%= t("customer_controller.created") %> <time datetime="<%= @customer.created_at.to_s %>" class="font-medium text-gray-400"><%= @customer.created_at.strftime("%B %d, %Y") %></time>
+       </div>
+    </div>
+  <% end %>
 </div>

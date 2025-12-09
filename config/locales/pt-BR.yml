@@ -230,6 +230,7 @@ pt-BR:
   customer_controller:
     title: Clientes
     description: Gerencie e veja seus clientes
+    back_to_list: Voltar para a lista
     errors:
       messages:
         prohibited_this_email_from_being_saved: Proibido salvar este email
@@ -241,19 +242,43 @@ pt-BR:
     no_files_selected: Nenhum arquivo selecionado
     show_details: Mostrar detalhes
     upload_new: Upload E-mail
+    contact_information: Informações de Contato
+    product_details: Detalhes do Produto
+    profile_active: Perfil Ativo
+    created: Criado
+    email_address: Endereço de E-mail
+    phone_number: Número de Telefone
+    product_code: Código do Produto
+    email_subject: Assunto do E-mail
     uploaded: Enviado
-  email_parse_log_controller:
+  email_controller:
+    title: Detalhes do Email
+    file_information: Informações do Arquivo
+    filename: Nome do Arquivo
+    size: Tamanho
+    uploaded_at: Enviado em
+    download: Baixar Arquivo
+    associated_logs: Logs de Processamento
+    no_logs: Nenhum log associado
+    parse_status: Status do Processamento
     actions: Ações
     all_email_parse_logs: Todos os logs de parse de email
-    customer: Customer
+    customer: Cliente Associado
     date: Data
     file_name: Nome do arquivo
-    manage_and_view_your_email_parse_logs: Gerencie e veja seus logs de parse de email
+    manage_and_view_your_email_parse_logs: Gerencie e veja seus logs de processamento de email
     show_details: Mostrar detalhes
     status: Status
-    title: Logs
-    upload_new: Upload E-mail
+    title: Logs de Email
+    upload_new: Upload Novo
     uploaded: Enviado
+    file_information: Informações do Arquivo
+    processing_details: Detalhes do Processamento
+    error_message: Mensagem de Erro
+    filename: Nome do Arquivo
+    processed_at: Processado em
+    raw_content: Conteúdo Bruto
+    view_raw_data: Visualizar Dados Brutos
   errors:
     messages:
       already_confirmed: já foi confirmado, por favor tente fazer login
@@ -266,4 +291,9 @@ pt-BR:
       not_saved:
         one: "1 erro impediu que este %{resource} fosse salvo:"
         other: "%{count} erros impediram que este %{resource} fosse salvo:"
+  shared:
+    status:
+      success: Sucesso
+      failed: Falhou
+      processing: Processando
   hello: Hello world

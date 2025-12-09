@@ -11,11 +11,11 @@
         { header: t("email_parse_log_controller.file_name"), proc: ->(email_parse_log) { 
             content_tag(:div, class: "flex items-center space-x-2") do
               concat content_tag(:span, nil, class: "w-2 h-2 rounded-full bg-blue-400")
-              concat content_tag(:span, email_parse_log.email.inspect, class: "font-mono text-gray-300")
+              concat content_tag(:span, email_parse_log.email.file.filename, class: "font-mono text-gray-300")
             end
           } 
         },
-        { header: t("email_parse_log_controller.status"), proc: ->(email_parse_log) { email_parse_log.status } },
+        { header: t("email_parse_log_controller.status"), proc: ->(email_parse_log) { render "shared/label", text: email_parse_log.status } },
         { header: t("email_parse_log_controller.customer"), proc: ->(email_parse_log) { email_parse_log.customer&.name } },
         { header: t("email_parse_log_controller.date"), proc: ->(email_parse_log) { email_parse_log.created_at.strftime("%b %d, %Y") } },
         { header: t("email_parse_log_controller.uploaded"), proc: ->(email_parse_log) { time_ago_in_words(email_parse_log.created_at) } },
