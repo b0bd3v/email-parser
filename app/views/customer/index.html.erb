@@ -1,29 +1,29 @@
 <div class="space-y-6">
   <%= render "shared/page_title", 
-             title: t("customer_controller.title"), 
-             description: t("customer_controller.description"),
+             title: t("customer_controller.index.title"), 
+             description: t("customer_controller.index.description"),
              new_path: new_email_path,
-             new_text: t("customer_controller.upload_new") %>
+             new_text: t("customer_controller.index.upload_new") %>
   <%= render "shared/table", 
       items: @customers,
       columns: [
-        { header: t("customer_controller.customer"), proc: ->(customer) { 
+        { header: t("customer_controller.index.customer"), proc: ->(customer) { 
             content_tag(:div, class: "flex items-center space-x-2") do
               concat content_tag(:span, nil, class: "w-2 h-2 rounded-full bg-blue-400")
               concat content_tag(:span, customer.name, class: "font-mono text-gray-300")
             end
           } 
         },
-        { header: t("customer_controller.contact"), proc: ->(customer) { 
+        { header: t("customer_controller.index.contact"), proc: ->(customer) { 
             content_tag(:div, class: "flex items-center space-x-2") do
               concat content_tag(:span, nil, class: "w-2 h-2 rounded-full bg-blue-400")
               concat content_tag(:span, customer.email, class: "font-mono text-gray-300")
             end
           } 
         },
-        { header: t("customer_controller.uploaded"), proc: ->(customer) { time_ago_in_words(customer.created_at) } },
-        { header: t("customer_controller.actions"), proc: ->(customer) {
-            link_to t("customer_controller.show_details"), customer_path(customer), class: "text-indigo-400 hover:text-indigo-300 hover:underline font-medium"
+        { header: t("customer_controller.index.uploaded"), proc: ->(customer) { time_ago_in_words(customer.created_at) } },
+        { header: t("customer_controller.index.actions"), proc: ->(customer) {
+            link_to t("customer_controller.index.show_details"), customer_path(customer), class: "text-indigo-400 hover:text-indigo-300 hover:underline font-medium"
           } 
         }
       ]

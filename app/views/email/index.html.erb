@@ -1,25 +1,25 @@
 <div class="space-y-6">
   <%= render "shared/page_title", 
-             title: t("email_controller.title"), 
-             description: t("email_controller.description"),
+             title: t("email_controller.index.title"), 
+             description: t("email_controller.index.description"),
              new_path: new_email_path,
-             new_text: t("email_controller.upload_new")
+             new_text: t("email_controller.index.upload_new")
              %>
 
   <%= render "shared/table", 
       items: @emails,
       columns: [
-        { header: t("email_controller.file_name"), proc: ->(email) { 
+        { header: t("email_controller.index.file_name"), proc: ->(email) { 
             content_tag(:div, class: "flex items-center space-x-2") do
               concat content_tag(:span, nil, class: "w-2 h-2 rounded-full bg-blue-400")
               concat content_tag(:span, email.file.filename.to_s, class: "font-mono text-gray-300")
             end
           } 
         },
-        { header: t("email_controller.date"), proc: ->(email) { email.created_at.strftime("%b %d, %Y") } },
-        { header: t("email_controller.uploaded"), proc: ->(email) { time_ago_in_words(email.created_at) } },
-        { header: t("email_controller.actions"), proc: ->(email) {
-            link_to t("email_controller.show_details"), email_path(email), class: "text-indigo-400 hover:text-indigo-300 hover:underline font-medium"
+        { header: t("email_controller.index.date"), proc: ->(email) { email.created_at.strftime("%b %d, %Y") } },
+        { header: t("email_controller.index.uploaded"), proc: ->(email) { time_ago_in_words(email.created_at) } },
+        { header: t("email_controller.index.actions"), proc: ->(email) {
+            link_to t("email_controller.index.show_details"), email_path(email), class: "text-indigo-400 hover:text-indigo-300 hover:underline font-medium"
           } 
         }
       ]

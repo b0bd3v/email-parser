@@ -1,7 +1,7 @@
 <div class="flex flex-col h-screen items-center justify-center w-full flex-grow">
   <div class="text-center mb-10 mt-[-26vh]">
-    <h1><%= t('email_controller.emails.upload_email') %></h1>
-    <p class="text-gray-400 text-lg"><%= t('email_controller.emails.import_your_email_files_to_automatically_extract_and_parse_data') %></p>
+    <h1><%= t('email_controller.new.title') %></h1>
+    <p class="text-gray-400 text-lg"><%= t('email_controller.new.description') %></p>
   </div>
 
   <%= form_with(model: @email, url: emails_path, local: true, class: "w-full max-w-3xl") do |f| %>
@@ -19,31 +19,24 @@
 
     <div class="flex items-center justify-center w-full">
       <label data-controller="upload" class="flex flex-col items-center justify-center w-full h-80 border-2 border-gray-700 border-dashed rounded-3xl cursor-pointer bg-gray-800/30 hover:bg-gray-800/60 hover:border-indigo-500 hover:text-indigo-400 transition-all duration-300 group relative overflow-hidden">
-        
-        <!-- Glow Effect on Hover -->
         <div class="absolute inset-0 bg-indigo-500/5 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-
-        <!-- Placeholder State -->
         <div data-upload-target="placeholder" class="flex flex-col items-center justify-center pt-5 pb-6 relative z-10 transition-all duration-300">
           <div class="p-4 rounded-full bg-gray-800 group-hover:bg-indigo-900/50 mb-4 transition-colors shadow-lg">
             <svg class="w-10 h-10 text-gray-400 group-hover:text-indigo-300 transition-colors transform group-hover:scale-110 duration-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
             </svg>
           </div>
-          <p class="mb-2 text-lg text-gray-300 group-hover:text-white transition-colors"><span class="font-semibold text-indigo-400"><%= t('email_controller.emails.click_to_upload_files') %></span> <%= t('email_controller.emails.or_drag_and_drop') %></p>
-          <p class="text-sm text-gray-500 group-hover:text-gray-400 transition-colors"><%= t('email_controller.emails.supported_formats') %></p>
+          <p class="mb-2 text-lg text-gray-300 group-hover:text-white transition-colors"><span class="font-semibold text-indigo-400"><%= t('email_controller.new.click_to_upload_files') %></span> <%= t('email_controller.new.or_drag_and_drop') %></p>
+          <p class="text-sm text-gray-500 group-hover:text-gray-400 transition-colors"><%= t('email_controller.new.supported_formats') %></p>
         </div>
-
-        <!-- Selected File State -->
         <div data-upload-target="preview" class="hidden flex-col items-center justify-center pt-5 pb-6 relative z-10 animate-fade-in-up">
            <div class="p-4 rounded-full bg-green-900/50 mb-4 border border-green-500/30 shadow-[0_0_15px_rgba(34,197,94,0.3)]">
             <svg class="w-10 h-10 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
             </svg>
           </div>
-          <p class="text-lg text-white font-medium mb-1"><%= t('email_controller.emails.file_name') %>:</p>
-          <p data-upload-target="filename" class="text-indigo-400 font-mono bg-indigo-900/30 px-3 py-1 rounded-md border border-indigo-500/30 text-center max-w-sm truncate"><%= t('email_controller.emails.no_files_selected') %></p>
-          <p class="text-xs text-gray-500 mt-4"><%= t('email_controller.emails.no_files_selected') %></p>
+          <p class="text-lg text-white font-medium mb-1"><%= t('email_controller.new.file_name') %></p>
+          <p data-upload-target="filename" class="text-indigo-400 font-mono bg-indigo-900/30 px-3 py-1 rounded-md border border-indigo-500/30 text-center max-w-sm truncate"><%= t('email_controller.new.no_files_selected') %></p>
         </div>
         
         <%= f.file_field :files, multiple: true, class: "hidden", name: "email[files][]", data: { upload_target: "input", action: "change->upload#handleFileSelect" } %>
@@ -52,11 +45,11 @@
 
     <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
       <%= render "shared/button", variant: :ghost, path: emails_path, extra_classes: "!text-gray-400 hover:!text-white w-full sm:w-auto" do %>
-        <%= t('email_controller.emails.cancel') %>
+        <%= t('email_controller.new.cancel') %>
       <% end %>
 
       <%= render "shared/button", variant: :primary, type: "submit", extra_classes: "w-full sm:w-auto" do %>
-        <%= t('email_controller.emails.process_file') %>
+        <%= t('email_controller.new.process_file') %>
       <% end %>
     </div>
   <% end %>

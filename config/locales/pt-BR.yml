@@ -72,7 +72,7 @@ pt-BR:
     upload: Upload
     emails: E-mails
     customers: Clientes
-    email_parse_logs: Logs de processamento
+    email_parse_logs: Processamento
     mobile_menu: Menu
     welcome: Bem-vindo
   datetime:
@@ -211,74 +211,93 @@ pt-BR:
       unlocked:
         Sua conta foi desbloqueada com sucesso. Por favor, faça login para
         continuar.
-  email_controller:
-    title: E-mails
-    description: Gerencie e veja seus e-mails
-    actions: Ações
-    date: Data
-    upload_new: Upload E-mail
-    emails:
-      cancel: Cancelar
-      click_to_upload_files: Clique para enviar arquivos
-      file_name: Nome do arquivo
-      import_your_email_files_to_automatically_extract_and_parse_data: Importe seus arquivos de email para extrair e analisar dados automaticamente
-      no_files_selected: Nenhum arquivo selecionado
-      or_drag_and_drop: Ou arraste e solte
-      process_file: Processar arquivo
-      supported_formats: "Formatos suportados: .eml, .txt"
-      upload_email: Upload email
   customer_controller:
-    title: Clientes
-    description: Gerencie e veja seus clientes
-    back_to_list: Voltar para a lista
     errors:
       messages:
         prohibited_this_email_from_being_saved: Proibido salvar este email
-    file_name: Nome do arquivo
-    id: Id
-    manage_and_view_your_uploaded_email_files:
-      Gerencie e veja seus arquivos de email
-      enviados
-    no_files_selected: Nenhum arquivo selecionado
-    show_details: Mostrar detalhes
-    upload_new: Upload E-mail
-    contact_information: Informações de Contato
-    product_details: Detalhes do Produto
-    profile_active: Perfil Ativo
-    created: Criado
-    email_address: Endereço de E-mail
-    phone_number: Número de Telefone
-    product_code: Código do Produto
-    email_subject: Assunto do E-mail
-    uploaded: Enviado
+    index:
+      title: Clientes
+      description: Gerencie e veja seus clientes
+      uploaded: Enviado
+      show_details: Mostrar detalhes
+      actions: Ações
+      contact: Contato
+      upload_new: Upload E-mail
+      no_files_selected: Nenhum arquivo selecionado
+    show:
+      description: Veja dados do cliente
+      back_to_list: Voltar para a lista
+      contact_information: Informações de Contato
+      created: Criado
+      product_details: Detalhes do Produto
+      email_address: Endereço de E-mail
+      phone_number: Número de Telefone
+      product_code: Código do Produto
+      email_subject: Assunto do E-mail
+
   email_controller:
-    title: Detalhes do Email
-    file_information: Informações do Arquivo
-    filename: Nome do Arquivo
-    size: Tamanho
-    uploaded_at: Enviado em
-    download: Baixar Arquivo
-    associated_logs: Logs de Processamento
-    no_logs: Nenhum log associado
-    parse_status: Status do Processamento
-    actions: Ações
-    all_email_parse_logs: Todos os logs de parse de email
-    customer: Cliente Associado
-    date: Data
-    file_name: Nome do arquivo
-    manage_and_view_your_email_parse_logs: Gerencie e veja seus logs de processamento de email
-    show_details: Mostrar detalhes
-    status: Status
-    title: Logs de Email
-    upload_new: Upload Novo
-    uploaded: Enviado
-    file_information: Informações do Arquivo
-    processing_details: Detalhes do Processamento
-    error_message: Mensagem de Erro
-    filename: Nome do Arquivo
-    processed_at: Processado em
-    raw_content: Conteúdo Bruto
-    view_raw_data: Visualizar Dados Brutos
+    index:
+      title: E-mails
+      description: Gerencie e veja seus e-mails
+      file_information: Informações do Arquivo
+      filename: Nome do Arquivo
+      actions: Ações
+      show_details: Mostrar detalhes
+      uploaded: Enviado
+      date: Data
+      file_name: Nome do arquivo
+      upload_new: Upload Novo
+    show:
+      title: Detalhes do Email
+      description: Veja seu arquivo de email
+      size: Tamanho
+      uploaded_at: Enviado em
+      download: Baixar Arquivo
+      associated_logs: Logs de Processamento
+      no_logs: Nenhum log associado
+      parse_status: Status do Processamento
+      all_email_parse_logs: Todos os logs de parse de email
+      customer: Cliente Associado
+      file_information: Informações do Arquivo
+      filename: Nome do Arquivo
+      back_to_list: Voltar para a lista
+    new:
+      title: Upload E-mail
+      description: Extraia dados de e-mail automaticamente
+      file_name: Nome do arquivo
+      click_to_upload_files: Clique para enviar arquivos
+      or_drag_and_drop: ou arraste e solte
+      supported_formats: "Formatos suportados: .eml, .txt"
+      cancel: Cancelar
+      process_file: Processar arquivos
+      success: "%{count} email(s) enviado(s) com sucesso"
+      failure: Falha ao enviar arquivos
+      no_files_selected: Nenhum arquivo selecionado
+  email_parse_log_controller:
+    index:
+      title: Processamento
+      description: Gerencie e veja seus logs de processamento de email
+      file_name: Nome do arquivo
+      status: Status
+      customer: Cliente
+      date: Data
+      uploaded: Enviado
+      actions: Ações
+      show_details: Mostrar detalhes
+      upload_new: Upload Novo
+    show:
+      title: Detalhes do Extração
+      description: Veja os detalhes do processamento de seu email
+      file_information: Informações do Arquivo
+      filename: Nome do Arquivo
+      customer: Cliente
+      processing_details: Detalhes do Processamento
+      error_message: Mensagem de Erro
+      processed_at: Processado em
+      raw_content: Conteúdo Bruto
+      view_raw_data: Visualizar Conteúdo Bruto
+      return_to_list: Voltar para a lista
+
   errors:
     messages:
       already_confirmed: já foi confirmado, por favor tente fazer login

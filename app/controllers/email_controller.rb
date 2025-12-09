@@ -14,15 +14,15 @@ class EmailController < ApplicationController
       created_count = create_emails(files)
 
       if created_count.positive?
-        redirect_to emails_path, notice: "#{created_count} email(s) uploaded successfully."
+        redirect_to emails_path, notice: t('email_controller.new.success', count: created_count)
       else
         @email = Email.new
-        flash.now[:alert] = 'Failed to upload files.'
+        flash.now[:alert] = t('email_controller.new.failure')
         render :new, status: :unprocessable_entity
       end
     else
       @email = Email.new
-      flash.now[:alert] = t('email_controller.no_files_selected')
+      flash.now[:alert] = t('email_controller.new.no_files_selected')
       render :new, status: :unprocessable_entity
     end
   end

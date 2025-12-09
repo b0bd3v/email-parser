@@ -1,26 +1,26 @@
 <div class="space-y-6">
 
   <%= render "shared/page_title", 
-             title: t("email_parse_log_controller.title"), 
-             description: t("email_parse_log_controller.manage_and_view_your_email_parse_logs"),
+             title: t("email_parse_log_controller.index.title"), 
+             description: t("email_parse_log_controller.index.description"),
              new_path: new_email_path,
-             new_text: t("email_parse_log_controller.upload_new") %>
+             new_text: t("email_parse_log_controller.index.upload_new") %>
   <%= render "shared/table", 
       items: @email_parse_logs,
       columns: [
-        { header: t("email_parse_log_controller.file_name"), proc: ->(email_parse_log) { 
+        { header: t("email_parse_log_controller.index.file_name"), proc: ->(email_parse_log) { 
             content_tag(:div, class: "flex items-center space-x-2") do
               concat content_tag(:span, nil, class: "w-2 h-2 rounded-full bg-blue-400")
               concat content_tag(:span, email_parse_log.email.file.filename, class: "font-mono text-gray-300")
             end
           } 
         },
-        { header: t("email_parse_log_controller.status"), proc: ->(email_parse_log) { render "shared/label", text: email_parse_log.status } },
-        { header: t("email_parse_log_controller.customer"), proc: ->(email_parse_log) { email_parse_log.customer&.name } },
-        { header: t("email_parse_log_controller.date"), proc: ->(email_parse_log) { email_parse_log.created_at.strftime("%b %d, %Y") } },
-        { header: t("email_parse_log_controller.uploaded"), proc: ->(email_parse_log) { time_ago_in_words(email_parse_log.created_at) } },
-        { header: t("email_parse_log_controller.actions"), proc: ->(email_parse_log) {
-            link_to t("email_parse_log_controller.show_details"), email_parse_log_path(email_parse_log), class: "text-indigo-400 hover:text-indigo-300 hover:underline font-medium"
+        { header: t("email_parse_log_controller.index.status"), proc: ->(email_parse_log) { render "shared/label", text: email_parse_log.status } },
+        { header: t("email_parse_log_controller.index.customer"), proc: ->(email_parse_log) { email_parse_log.customer&.name } },
+        { header: t("email_parse_log_controller.index.date"), proc: ->(email_parse_log) { email_parse_log.created_at.strftime("%b %d, %Y") } },
+        { header: t("email_parse_log_controller.index.uploaded"), proc: ->(email_parse_log) { time_ago_in_words(email_parse_log.created_at) } },
+        { header: t("email_parse_log_controller.index.actions"), proc: ->(email_parse_log) {
+            link_to t("email_parse_log_controller.index.show_details"), email_parse_log_path(email_parse_log), class: "text-indigo-400 hover:text-indigo-300 hover:underline font-medium"
           } 
         }
       ]
