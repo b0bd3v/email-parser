@@ -5,9 +5,9 @@ require 'rails_helper'
 describe 'Emails', type: :request do
   let(:user) { create(:user) }
 
-  before { sign_in user }
-
   describe 'POST /create' do
+    before { sign_in user }
+
     let(:file_four) do
       fixture_file_upload(Rails.root.join('spec', 'fixtures', 'emails', 'email4.eml'), 'application/eml')
     end
@@ -22,6 +22,8 @@ describe 'Emails', type: :request do
   end
 
   describe 'GET /index' do
+    before { sign_in user }
+
     it 'returns http success' do
       get emails_path
       expect(response).to have_http_status(:success)

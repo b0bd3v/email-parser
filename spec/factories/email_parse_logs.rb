@@ -15,6 +15,15 @@
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #  customer_id   :integer
+#  email_id      :bigint           not null
+#
+# Indexes
+#
+#  index_email_parse_logs_on_email_id  (email_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (email_id => emails.id)
 #
 FactoryBot.define do
   factory :email_parse_log do
@@ -25,11 +34,12 @@ FactoryBot.define do
     raw_data { File.read(Rails.root.join('spec', 'fixtures', 'emails', 'email4.eml')) }
     error_message { nil }
     customer { nil }
+    email { create(:email) }
 
     trait :success do
       status { 'success' }
       parsed_data { { customer_id: 1, product_code: 'ABC123', email_subject: 'Test Email' }.to_json }
-      customer { build(:customer) }
+      customer { create(:customer) }
     end
 
     trait :failed do

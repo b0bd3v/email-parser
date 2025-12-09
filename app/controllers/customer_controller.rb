@@ -1,5 +1,7 @@
-# Manages customer-related actions such as listing and showing details.
+# frozen_string_literal: true
+
 class CustomerController < ApplicationController
+  before_action :authenticate_user!
   def index
     @customers = Customer.order(created_at: :desc).page(params[:page]).per(10)
   end

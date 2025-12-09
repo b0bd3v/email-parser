@@ -11,6 +11,8 @@
 class Email < ApplicationRecord
   has_one_attached :file
 
+  has_many :email_parse_logs
+
   validates :file, presence: true
   validate :file_extension
 

@@ -36,11 +36,10 @@ gem 'faraday', '~> 2.14'
 gem 'devise', '~> 4.9'
 
 # Pagination gem
-gem "kaminari", "~> 1.2"
+gem 'kaminari', '~> 1.2'
 
 # I18n gem
-gem "rails-i18n", "~> 7.0"
-
+gem 'rails-i18n', '~> 7.0'
 
 group :development, :test do
   gem 'debug', platforms: %i[mri mingw mswin x64_mingw]
@@ -53,9 +52,9 @@ end
 
 group :development do
   gem 'annotate', '~> 3.2'
+  gem 'i18n-tasks', '~> 1.1'
   gem 'rubocop', '~> 1.81'
   gem 'web-console'
-  gem "i18n-tasks", "~> 1.1"
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem 'rack-mini-profiler'

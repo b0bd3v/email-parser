@@ -10,6 +10,6 @@
 #
 FactoryBot.define do
   factory :email do
-    file { fixture_file_upload('upload.eml', 'application/eml') }
+    file { Rack::Test::UploadedFile.new(Rails.root.join('spec', 'fixtures', 'files', 'upload.eml'), 'application/eml') }
   end
 end

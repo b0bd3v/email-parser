@@ -39,3 +39,6 @@ Metrics/AbcSize:
 Lint/EmptyBlock:
   Exclude:
     - "spec/**/*"
+
+Style/Documentation:
+  Enabled: false

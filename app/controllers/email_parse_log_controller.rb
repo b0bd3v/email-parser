@@ -1,6 +1,12 @@
+# frozen_string_literal: true
+
 class EmailParseLogController < ApplicationController
+  before_action :authenticate_user!
   def index
-    @email_parse_logs = EmailParseLog.order(created_at: :desc).page(params[:page]).per(params[:per_page] || 10)
+    @email_parse_logs = EmailParseLog.includes(:email)
+                                     .order(created_at: :desc)
+                                     .page(params[:page])
+                                     .per(params[:per_page] || 10)
   end
 
   def show

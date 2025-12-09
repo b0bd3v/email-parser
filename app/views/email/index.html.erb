@@ -1,17 +1,12 @@
 <div class="space-y-6">
-  <div class="flex items-center justify-between">
-    <div>
-      <h1><%= t("email_controller.title") %></h1>
-      <p class="text-gray-400 mt-1"><%= t("email_controller.manage_and_view_your_uploaded_email_files") %></p>
-    </div>
-    <%= link_to new_email_path, class: "inline-flex items-center justify-center px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-xl transition-all shadow-lg shadow-blue-500/30 transform hover:-translate-y-0.5" do %>
-      <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
-      <%= t("email_controller.upload_new") %>
-    <% end %>
-  </div>
+  <%= render "shared/page_title", 
+             title: t("email_controller.title"), 
+             description: t("email_controller.description"),
+             new_path: new_email_path,
+             new_text: t("email_controller.upload_new")
+             %>
 
   <%= render "shared/table", 
-      title: t("email_controller.all_emails"),
       items: @emails,
       columns: [
         { header: t("email_controller.file_name"), proc: ->(email) { 

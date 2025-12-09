@@ -67,6 +67,14 @@ pt-BR:
         remember_created_at: Lembrar criado em
         reset_password_sent_at: Token de redefinição de senha enviado em
         reset_password_token: Token de redefinição de sen
+  navbar:
+    brand: EmailParser
+    upload: Upload
+    emails: E-mails
+    customers: Clientes
+    email_parse_logs: Logs de processamento
+    mobile_menu: Menu
+    welcome: Bem-vindo
   datetime:
     distance_in_words:
       about_x_hours: "%{count} hora(s) atrás"
@@ -204,21 +212,24 @@ pt-BR:
         Sua conta foi desbloqueada com sucesso. Por favor, faça login para
         continuar.
   email_controller:
+    title: E-mails
+    description: Gerencie e veja seus e-mails
     actions: Ações
-    all_emails: Todos os emails
     date: Data
+    upload_new: Upload E-mail
     emails:
       cancel: Cancelar
       click_to_upload_files: Clique para enviar arquivos
       file_name: Nome do arquivo
-      import_your_email_files_to_automatically_extract_and_parse_data:
-        Importe seus
-        arquivos de email para extrair e analisar dados automaticamente
+      import_your_email_files_to_automatically_extract_and_parse_data: Importe seus arquivos de email para extrair e analisar dados automaticamente
       no_files_selected: Nenhum arquivo selecionado
       or_drag_and_drop: Ou arraste e solte
       process_file: Processar arquivo
       supported_formats: "Formatos suportados: .eml, .txt"
       upload_email: Upload email
+  customer_controller:
+    title: Clientes
+    description: Gerencie e veja seus clientes
     errors:
       messages:
         prohibited_this_email_from_being_saved: Proibido salvar este email
@@ -229,8 +240,7 @@ pt-BR:
       enviados
     no_files_selected: Nenhum arquivo selecionado
     show_details: Mostrar detalhes
-    title: E-mails
-    upload_new: Upload novo
+    upload_new: Upload E-mail
     uploaded: Enviado
   email_parse_log_controller:
     actions: Ações
@@ -242,7 +252,7 @@ pt-BR:
     show_details: Mostrar detalhes
     status: Status
     title: Logs
-    upload_new: Upload new
+    upload_new: Upload E-mail
     uploaded: Enviado
   errors:
     messages:

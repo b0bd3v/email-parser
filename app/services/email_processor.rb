@@ -15,7 +15,7 @@ class EmailProcessor
       parsed
     end
   rescue StandardError
-    @email_parse_log.mark_as_failed!
+    @email_parse_log&.mark_as_failed!
     raise
   end
 
@@ -38,12 +38,26 @@ class EmailProcessor
   end
 
   def email_parse_log
-    EmailParseLog.create(
-      raw_data: email_from_file.body,
-      partner_email: partner_email,
-      file_name: File.basename(@file_path),
-      raw_file_path: @file_path
+    @email_parse_log ||= begin
+      email = create_email_record
+      EmailParseLog.create(
+        email: email,
+        raw_data: email_from_file.body,
+        partner_email: partner_email,
+        file_name: File.basename(@file_path),
+        raw_file_path: @file_path
+      )
+    end
+  end
+
+  def create_email_record
+    email = Email.new
+    email.file.attach(
+      io: File.open(@file_path),
+      filename: File.basename(@file_path)
     )
+    email.save!
+    email
   end
 
   def parsed_data

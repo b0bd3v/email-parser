@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 20_251_207_233_615) do
+ActiveRecord::Schema[7.1].define(version: 20_251_209_150_613) do
   # These are extensions that must be enabled in order to support this database
   enable_extension 'plpgsql'
 
@@ -66,6 +66,8 @@ ActiveRecord::Schema[7.1].define(version: 20_251_207_233_615) do
     t.datetime 'updated_at', null: false
     t.integer 'customer_id'
     t.string 'partner_email'
+    t.bigint 'email_id', null: false
+    t.index ['email_id'], name: 'index_email_parse_logs_on_email_id'
   end
 
   create_table 'emails', force: :cascade do |t|
@@ -87,4 +89,5 @@ ActiveRecord::Schema[7.1].define(version: 20_251_207_233_615) do
 
   add_foreign_key 'active_storage_attachments', 'active_storage_blobs', column: 'blob_id'
   add_foreign_key 'active_storage_variant_records', 'active_storage_blobs', column: 'blob_id'
+  add_foreign_key 'email_parse_logs', 'emails'
 end

@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# Controller for managing emails.
 class EmailController < ApplicationController
   before_action :authenticate_user!
 

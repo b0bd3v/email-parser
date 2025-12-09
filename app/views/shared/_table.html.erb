@@ -1,15 +1,10 @@
 <div class="w-full bg-gray-900/60 backdrop-blur-xl border border-gray-800/50 rounded-3xl shadow-2xl overflow-hidden flex flex-col">
-  <!-- Header Section -->
   <% if local_assigns[:title] %>
     <div class="px-8 py-6 border-b border-gray-800/50 flex justify-between items-center bg-gray-900/30">
       <h2 class="text-xl font-bold text-white tracking-tight"><%= title %></h2>
-      <div class="text-sm text-gray-400">
-        <%= page_entries_info items, entry_name: 'item' %>
-      </div>
     </div>
   <% end %>
 
-  <!-- Table Wrapper -->
   <div class="overflow-x-auto">
     <table class="w-full text-left border-collapse">
       <thead>
@@ -50,7 +45,6 @@
     </table>
   </div>
 
-  <!-- Pagination -->
   <% if items.respond_to?(:total_pages) && items.total_pages > 1 %>
     <div class="px-6 py-4 border-t border-gray-800/50 bg-gray-900/30 flex justify-end">
       <%= paginate items %>

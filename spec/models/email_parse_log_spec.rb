@@ -15,6 +15,15 @@
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #  customer_id   :integer
+#  email_id      :bigint           not null
+#
+# Indexes
+#
+#  index_email_parse_logs_on_email_id  (email_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (email_id => emails.id)
 #
 require 'rails_helper'
 
