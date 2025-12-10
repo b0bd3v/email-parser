@@ -8,11 +8,11 @@
     remote:        data-remote
 -%>
 <% if page.current? %>
-  <span aria-current="page" class="relative z-10 inline-flex items-center bg-indigo-600 px-4 py-2 text-sm font-semibold text-white focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 first:rounded-l-md last:rounded-r-md">
+  <span aria-current="page" class="relative z-10 inline-flex items-center justify-center w-8 h-8 text-sm font-bold text-white bg-white/10 border border-white/20 rounded-lg shadow-lg backdrop-blur-sm transform scale-105 transition-all duration-300">
     <%= page %>
   </span>
 <% else %>
-  <a href="<%= url %>" rel="next" class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-400 ring-1 ring-inset ring-gray-800/50 hover:bg-gray-800 focus:z-20 focus:outline-offset-0 bg-gray-900 first:rounded-l-md last:rounded-r-md">
+  <a href="<%= url %>" rel="next" class="relative inline-flex items-center justify-center w-8 h-8 text-sm font-medium text-gray-400 rounded-lg hover:text-white hover:bg-white/5 hover:border-white/10 border border-transparent transition-all duration-300 ease-out">
     <%= page %>
   </a>
 <% end %>
