@@ -285,6 +285,7 @@ pt-BR:
       actions: Ações
       show_details: Mostrar detalhes
       upload_new: Upload Novo
+      destroy_all: Apagar todos os logs
     show:
       title: Detalhes do Extração
       description: Veja os detalhes do processamento de seu email
@@ -297,6 +298,8 @@ pt-BR:
       raw_content: Conteúdo Bruto
       view_raw_data: Visualizar Conteúdo Bruto
       return_to_list: Voltar para a lista
+    destroy_all:
+      success: Todos os logs de processamento de email foram excluídos com sucesso
 
   errors:
     messages:
@@ -316,3 +319,5 @@ pt-BR:
       failed: Falhou
       processing: Processando
   hello: Hello world
+  upload:
+    files_selected: "%{count} arquivos selecionados"

@@ -2,6 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
   static targets = ["input", "preview", "placeholder", "filename"]
+  static values = { filesSelected: String }
 
   connect() {
     this.reset()
@@ -13,7 +14,7 @@ export default class extends Controller {
       if (files.length === 1) {
         this.filenameTarget.textContent = files[0].name
       } else {
-        this.filenameTarget.textContent = `${files.length} files selected`
+        this.filenameTarget.textContent = this.filesSelectedValue.replace("%{count}", files.length)
       }
       
       this.previewTarget.classList.remove("hidden")

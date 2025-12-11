@@ -22,7 +22,8 @@
       <% if notice.present? || alert.present? %>
         <div class="fixed top-5 left-1/2 transform -translate-x-1/2 z-[100] w-full max-w-lg px-4 space-y-3 pointer-events-none">
           <% if notice.present? %>
-            <div data-controller="removable" class="pointer-events-auto flex items-center p-4 text-sm text-blue-800 rounded-xl bg-white/90 backdrop-blur-sm border border-blue-200 shadow-xl dark:bg-gray-800/90 dark:text-blue-400 dark:border-blue-800 transition-all animate-fade-in-down" role="alert">
+            <div data-controller="removable" class="pointer-events-auto relative overflow-hidden flex items-center p-4 text-sm text-blue-800 rounded-xl bg-white/90 backdrop-blur-sm border border-gray-200 shadow-xl dark:bg-gray-800/90 dark:text-blue-400 dark:border-gray-700 transition-all animate-fade-in-down" role="alert">
+              <div data-removable-target="bar" class="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 w-full"></div>
               <svg class="flex-shrink-0 inline w-5 h-5 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
               </svg>
@@ -37,7 +38,8 @@
           <% end %>
 
           <% if alert.present? %>
-            <div data-controller="removable" class="pointer-events-auto flex items-center p-4 text-sm text-red-800 rounded-xl bg-white/90 backdrop-blur-sm border border-red-200 shadow-xl dark:bg-gray-800/90 dark:text-red-400 dark:border-red-800 transition-all animate-fade-in-down" role="alert">
+            <div data-controller="removable" class="pointer-events-auto relative overflow-hidden flex items-center p-4 text-sm text-red-800 rounded-xl bg-white/90 backdrop-blur-sm border border-gray-200 shadow-xl dark:bg-gray-800/90 dark:text-red-400 dark:border-gray-700 transition-all animate-fade-in-down" role="alert">
+              <div data-removable-target="bar" class="absolute bottom-0 left-0 h-1 bg-red-500 w-full"></div>
               <svg class="flex-shrink-0 inline w-5 h-5 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
               </svg>
