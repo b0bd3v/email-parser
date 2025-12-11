@@ -2,6 +2,10 @@ services:
   database:
     image: postgres:15
     container_name: database-email-parser
+    profiles:
+      - development
+      - test
+      - production
     ports:
       - "5432:5432"
     environment:
@@ -13,17 +17,56 @@ services:
   redis:
     image: redis:7
     container_name: redis-email-parser
+    profiles:
+      - development
+      - test
+      - production
     ports:
       - "6379:6379"
     volumes:
       - redis_email_parser:/data
 
+  web_production:
+    build: .
+    container_name: web-email-parser-production
+    profiles:
+      - production
+    env_file:
+      - .env.docker
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+    depends_on:
+      - database
+      - redis
+    entrypoint: ["/app/ops/web_entrypoint.sh"]
+
+  web_development:
+    build: .
+    container_name: web-email-parser-development
+    profiles:
+      - development
+    command: bin/dev
+    env_file:
+      - .env
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+    depends_on:
+      - database
+      - redis
+
   sidekiq:
     build: .
     container_name: sidekiq-email-parser
     command: bundle exec sidekiq
+    profiles:
+      - development
+      - production
     env_file:
-      - .env
+      - .env.docker
     environment:
       DATABASE_URL: postgresql://postgres:postgres@database-email-parser:5432/email_parser_development
       REDIS_URL: redis://redis-email-parser:6379/0
@@ -37,9 +80,9 @@ services:
   test:
     build: .
     container_name: test-email-parser
+    profiles:
+      - test
     command: bundle exec rspec
-    env_file:
-      - .env.test
     environment:
       DATABASE_URL: postgresql://postgres:postgres@database-email-parser:5432/email_parser_test
       REDIS_URL: redis://redis-email-parser:6379/0
