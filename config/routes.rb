@@ -5,7 +5,11 @@
 
 Rails.application.routes.draw do
   devise_for :users
-  resources :email_parse_logs, controller: :email_parse_log, only: %i[index show retry]
+  resources :email_parse_logs, controller: :email_parse_log, only: %i[index show] do
+    collection do
+      delete :destroy_all
+    end
+  end
   resources :emails, controller: :email, only: %i[index new create show]
   resources :customers, controller: :customer, only: %i[index show]
 

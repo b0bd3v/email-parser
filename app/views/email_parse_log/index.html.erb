@@ -25,4 +25,9 @@
         }
       ]
   %>
+
+
+  <%= render "shared/button", path: destroy_all_email_parse_logs_path, variant: :danger, data: { turbo_method: :delete, turbo_confirm: t('are_you_sure', default: 'Are you sure?') } do %>
+    <%= t("email_parse_log_controller.index.destroy_all") %>
+  <% end %>
 </div>

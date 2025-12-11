@@ -12,4 +12,9 @@ class EmailParseLogController < ApplicationController
   def show
     @email_parse_log = EmailParseLog.find(params[:id])
   end
+
+  def destroy_all
+    EmailParseLog.destroy_all
+    redirect_to email_parse_logs_index_url, notice: t('email_parse_log_controller.destroy_all.success')
+  end
 end
