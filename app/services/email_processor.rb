@@ -14,10 +14,12 @@ class EmailProcessor
       update_email_parse_log(parsed, customer)
       parsed
     end
-  rescue StandardError
-    @email_parse_log&.mark_as_failed!
+  rescue StandardError => e
+    @email_parse_log.mark_as_failed
+    @email_parse_log.error_message = e.message
+    @email_parse_log.save!
 
-    raise
+    raise e
   end
 
   private
@@ -30,12 +32,13 @@ class EmailProcessor
   end
 
   def create_customer(parsed)
-    Customer.create_or_find_by!(email: email_from_file.from.first) do |c|
-      c.name = parsed[:name]
-      c.phone = parsed[:phone]
-      c.email_subject = parsed[:email_subject]
-      c.product_code = parsed[:product_code]
-    end
+    Customer.create!(
+      name: parsed[:name],
+      email: parsed[:email],
+      phone: parsed[:phone],
+      product_code: parsed[:product_code],
+      email_subject: parsed[:email_subject]
+    )
   end
 
   def email_parse_log
