@@ -19,6 +19,7 @@
         { header: t("email_parse_log_controller.index.customer"), proc: ->(email_parse_log) { email_parse_log.customer&.name } },
         { header: t("email_parse_log_controller.index.date"), proc: ->(email_parse_log) { email_parse_log.created_at.strftime("%b %d, %Y") } },
         { header: t("email_parse_log_controller.index.uploaded"), proc: ->(email_parse_log) { time_ago_in_words(email_parse_log.created_at) } },
+        { header: t("email_parse_log_controller.index.parse_method"), proc: ->(email_parse_log) { render "shared/label", text: email_parse_log.parse_method if email_parse_log.parse_method.present? } },
         { header: t("email_parse_log_controller.index.actions"), proc: ->(email_parse_log) {
             link_to t("email_parse_log_controller.index.show_details"), email_parse_log_path(email_parse_log), class: "text-indigo-400 hover:text-indigo-300 hover:underline font-medium"
           } 

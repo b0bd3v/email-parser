@@ -54,10 +54,13 @@ class EmailProcessor
   def parsed_data
     case partner_email
     when 'loja@fornecedorA.com'
+      @email_parse_log.parse_method = 'Partner'
       EmailParser::PartnerA.new(email_from_file).parse
     when 'contato@parceiroB.com'
+      @email_parse_log.parse_method = 'Partner'
       EmailParser::PartnerB.new(email_from_file).parse
     else
+      @email_parse_log.parse_method = 'IA'
       EmailParser::UndefinedOrigin.new(email_from_file).parse
     end
   end

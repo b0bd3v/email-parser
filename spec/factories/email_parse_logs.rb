@@ -7,6 +7,7 @@
 #  id            :bigint           not null, primary key
 #  error_message :text
 #  file_name     :string
+#  parse_method  :string
 #  parsed_data   :jsonb
 #  partner_email :string
 #  raw_data      :text

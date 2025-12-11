@@ -48,6 +48,13 @@
             </div>
           </div>
 
+          <div class="pl-4 group/item">
+            <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1"><%= t("email_parse_log_controller.show.parse_method") %></label>
+            <div class="flex items-center text-gray-300 group-hover/item:text-white transition-colors">
+              <span class="text-lg"><%= @email_parse_log.parse_method %></span>
+            </div>
+          </div>
+
           <% if @email_parse_log.customer.present? %>
             <div class="pl-4 group/item">
               <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1"><%= t("email_parse_log_controller.show.customer") %></label>

@@ -286,6 +286,7 @@ pt-BR:
       show_details: Mostrar detalhes
       upload_new: Upload Novo
       destroy_all: Apagar todos os logs
+      parse_method: Método
     show:
       title: Detalhes do Extração
       description: Veja os detalhes do processamento de seu email
@@ -295,6 +296,7 @@ pt-BR:
       processing_details: Detalhes do Processamento
       error_message: Mensagem de Erro
       processed_at: Processado em
+      parse_method: Método de Extração
       raw_content: Conteúdo Bruto
       view_raw_data: Visualizar Conteúdo Bruto
       return_to_list: Voltar para a lista
