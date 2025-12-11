@@ -1,41 +1,48 @@
-# README
+# Email Parser
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Aplicação Ruby on Rails para processamento e extração de dados de emails.
 
-Things you may want to cover:
+## 🚀 Como executar
 
-* Ruby version
+1. **Configure as variáveis de ambiente**
+   Crie o arquivo `.env.docker` na raiz do projeto com o seguinte conteúdo:
 
-* System dependencies
+   ```bash
+   RAILS_ENV=production
+   DB_HOST=database
+   DB_PORT=5432
+   DB_USERNAME=postgres
+   DB_PASSWORD=postgres
+   REDIS_HOST=redis
+   REDIS_PORT=6379
+   DATABASE_URL=postgresql://postgres:postgres@database-email-parser:5432/email_parser_development
+   REDIS_URL=redis://redis-email-parser:6379/0
+   SECRET_KEY_BASE=cdd3581372c7dd9a5d41fc280c26e2cb247988206d98207432d696750a53add9e710567c5d34c641aa6ecf1bf09282e00100d325d66ad163619e721e3c81bb88
+   GEMINI_API_KEY=[Vai estar no e-mail]
+   ```
 
-* Configuration
+2. **Inicie o ambiente**
+   ```bash
+   docker compose --profile production up
+   ```
 
-* Database creation
+A aplicação estará disponível em [http://localhost:3000](http://localhost:3000).
 
-* Database initialization
+## 🧠 Funcionalidade de IA
 
-* How to run the test suite
+Foi implementada essa funcionalidade como uma forma de obter dados de emails que não tem padrão definido.
 
-* Services (job queues, cache servers, search engines, etc.)
+## 🧪 Testes
 
-* Deployment instructions
-
-## Ambiente de desenvolvimento
-
-Executando aplicação em ambiente de desenvolvimento:
+Para executar a suíte de testes (RSpec):
 
 ```bash
-bin/dev
+docker compose --profile test up
 ```
-Executando dessa forma, o Rails irá iniciar os processos definidos no arquivo `Procfile.dev`. O que inclui:
 
-- `web`: Inicia o servidor Rails
-- `css`: Inicia o processador de CSS (Tailwind), que irá compilar os arquivos CSS toda vez que houver alterações.
+## Serviços
 
-## Ambiente de teste
-
-Para executar os testes:
-```bash
-bundle exec rspec
-```
+- **Web**: Aplicação Rails.
+- **Sidekiq**: Processamento de jobs em segundo plano (processamento de emails).
+- **Database**: PostgreSQL 15.
+- **Redis**: Redis 7 (para Sidekiq e cache).
