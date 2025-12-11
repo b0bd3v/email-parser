@@ -2,6 +2,10 @@
 
 Aplicação Ruby on Rails para processamento e extração de dados de emails.
 
+## 📹 Video explicativo
+
+https://youtu.be/GBayKRtt5l4
+
 ## 🚀 Como executar
 
 1. **Configure as variáveis de ambiente**
