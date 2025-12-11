@@ -26,28 +26,11 @@ services:
     volumes:
       - redis_email_parser:/data
 
-  web_production:
+  web:
     build: .
     container_name: web-email-parser-production
     profiles:
       - production
-    env_file:
-      - .env.docker
-    ports:
-      - "3000:3000"
-    volumes:
-      - .:/app
-    depends_on:
-      - database
-      - redis
-    entrypoint: ["/app/ops/web_entrypoint.sh"]
-
-  web_development:
-    build: .
-    container_name: web-email-parser-development
-    profiles:
-      - development
-    command: bin/dev
     env_file:
       - .env
     ports:
@@ -57,6 +40,7 @@ services:
     depends_on:
       - database
       - redis
+    entrypoint: [ "/app/ops/web_entrypoint.sh" ]
 
   sidekiq:
     build: .
@@ -66,7 +50,7 @@ services:
       - development
       - production
     env_file:
-      - .env.docker
+      - .env
     environment:
       DATABASE_URL: postgresql://postgres:postgres@database-email-parser:5432/email_parser_development
       REDIS_URL: redis://redis-email-parser:6379/0
