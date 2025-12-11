@@ -73,6 +73,7 @@ services:
       RAILS_ENV: test
     volumes:
       - .:/app
+      - ./coverage:/rails/coverage
     depends_on:
       - database
       - redis

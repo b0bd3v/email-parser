@@ -5,7 +5,7 @@ Aplicação Ruby on Rails para processamento e extração de dados de emails.
 ## 🚀 Como executar
 
 1. **Configure as variáveis de ambiente**
-   Crie o arquivo `.env.docker` na raiz do projeto com o seguinte conteúdo:
+   Crie o arquivo `.env` na raiz do projeto com o seguinte conteúdo:
 
    ```bash
    RAILS_ENV=production
@@ -39,10 +39,3 @@ Para executar a suíte de testes (RSpec):
 ```bash
 docker compose --profile test up
 ```
-
-## Serviços
-
-- **Web**: Aplicação Rails.
-- **Sidekiq**: Processamento de jobs em segundo plano (processamento de emails).
-- **Database**: PostgreSQL 15.
-- **Redis**: Redis 7 (para Sidekiq e cache).
